@@ -26,7 +26,7 @@ class PoliticalNews extends Component {
         let category = "Politics"
 
         let url = "https://api.cognitive.microsoft.com/bing/v7.0/news/?category=" + category
-
+        
         const myHeaders = new Headers({
             'Ocp-Apim-Subscription-Key': MICROSOFT_API_KEY
         });
@@ -67,39 +67,21 @@ class PoliticalNews extends Component {
             return (
                 <>
                 {results.map((result, i) => (
-                    <Col xs={12} xl={12}>
-                        {result.ampUrl !== undefined &&
-                            <a href={result.ampUrl}>
-                                <Card>
-                                    { results[i].image !== undefined && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
-                                    <Card.Body>
-                                        <Card.Header>
-                                            {<Card.Title>{result.name}</Card.Title> }
-                                            <Card.Text>{result.description}</Card.Text>
-                                            <Card.Text>{result.provider.name}</Card.Text>
-                                            <Card.Text>{result.datePublished}</Card.Text>
-                                            <Card.Text>{result.ampUrl}</Card.Text>
-                                        </Card.Header>
-                                    </Card.Body>
-                                </Card>
-                            </a>
-                        }
-                        {result.ampUrl === undefined && result.url !== undefined &&
-                            <a href={result.url}>
-                                <Card>
-                                    { results[i].image !== undefined && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
-                                    <Card.Body>
-                                        <Card.Header>
-                                            {<Card.Title>{result.name}</Card.Title> }
-                                            <Card.Text>{result.description}</Card.Text>
-                                            <Card.Text>{result.provider.name}</Card.Text>
-                                            <Card.Text>{result.datePublished}</Card.Text>
-                                            <Card.Text>{result.ampUrl}</Card.Text>
-                                        </Card.Header>
-                                    </Card.Body>
-                                </Card>
-                            </a>
-                        }
+                     <Col xs={12} xl={12}>
+                        <Card>
+                            { "contentUrl" in result.image.thumbnail === true && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
+                             <Card.Body>
+                                 <Card.Header>
+                                     {<Card.Title>{result.name}</Card.Title> }
+                                    <Card.Text>
+                                        <Card.Text>{result.description}</Card.Text>
+                                        <Card.Text>{result.provider.name}</Card.Text>
+                                        <Card.Text>{result.datePublished}</Card.Text>
+                                        <Card.Text>{result.ampUrl}</Card.Text>
+                                    </Card.Text>
+                                 </Card.Header>
+                             </Card.Body>
+                         </Card>
                     </Col>
                 ))}
                 </>
@@ -107,5 +89,4 @@ class PoliticalNews extends Component {
         }
     }
 }
-
 export default PoliticalNews;
