@@ -5,9 +5,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import {MICROSOFT_API_KEY} from '../../API_keys';
+import {PROPUBLICA_API_KEY} from '../../API_keys';
 
-class PoliticalNews extends Component {
+class SenateMembers extends Component {
 
     constructor(props) {
         super(props);
@@ -24,11 +24,12 @@ class PoliticalNews extends Component {
     // Example of an API Call
     componentDidMount() {
         let category = "Politics"
-
-        let url = "https://api.cognitive.microsoft.com/bing/v7.0/news/?category=" + category
+        let senate_count = "116"
+        let sitting = "senate"
+        let url = "https://api.propublica.org/congress/v1/" + senate_count + "/" + sitting + "/members.json"
         
         const myHeaders = new Headers({
-            'Ocp-Apim-Subscription-Key': MICROSOFT_API_KEY
+            'X-API-Key': PROPUBLICA_API_KEY
         });
 
         const myRequest = new Request(url, {
@@ -42,7 +43,7 @@ class PoliticalNews extends Component {
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    results: result["value"]
+                    results: result["results"][0]["members"]
                 });
             },
             // Note: it's important to handle errors here
@@ -69,15 +70,16 @@ class PoliticalNews extends Component {
                 {results.map((result, i) => (
                      <Col xs={12} xl={12}>
                         <Card>
-                            { "contentUrl" in result.image.thumbnail === true && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
-                             <Card.Body>
+                            <Card.Body>
                                  <Card.Header>
-                                     {<Card.Title>{result.name}</Card.Title> }
+                                     {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
                                     <Card.Text>
-                                        <Card.Text>{result.description}</Card.Text>
-                                        <Card.Text>{result.provider.name}</Card.Text>
-                                        <Card.Text>{result.datePublished}</Card.Text>
-                                        <Card.Text>{result.ampUrl}</Card.Text>
+                                        {result.party === "D" && <Card.Text>Democrat</Card.Text>}
+                                        {result.party === "R" && <Card.Text>Republican</Card.Text>}
+                                        <Card.Text>{"ID: " + result.id}</Card.Text>
+                                        <Card.Text>{"Facebook: " + result.facebook_account}</Card.Text>
+                                        <Card.Text>{result.url}</Card.Text>
+                                        <Card.Text>{result.state}</Card.Text>
                                     </Card.Text>
                                  </Card.Header>
                              </Card.Body>
@@ -90,4 +92,4 @@ class PoliticalNews extends Component {
     }
 }
 
-export default PoliticalNews;
+export default SenateMembers;

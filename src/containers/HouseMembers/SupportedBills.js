@@ -5,9 +5,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import {MICROSOFT_API_KEY} from '../../API_keys';
+import {PROPUBLICA_API_KEY} from '../../API_keys';
 
-class PoliticalNews extends Component {
+class SupportedBills extends Component {
 
     constructor(props) {
         super(props);
@@ -15,7 +15,7 @@ class PoliticalNews extends Component {
             error: null,
             isLoaded: false,
             election: null,
-            pollingLocations: null,
+            supported_bills: null,
             results: null,
             state: null
         }
@@ -23,15 +23,16 @@ class PoliticalNews extends Component {
 
     // Example of an API Call
     componentDidMount() {
-        let category = "Politics"
+        let member_id = "L000287" 
+        let type = "active"
 
-        let url = "https://api.cognitive.microsoft.com/bing/v7.0/news/?category=" + category
+        let url_bill = "https://api.propublica.org/congress/v1/members/" + member_id + "/bills/" + type + ".json"
         
         const myHeaders = new Headers({
-            'Ocp-Apim-Subscription-Key': MICROSOFT_API_KEY
+            'X-API-Key': PROPUBLICA_API_KEY
         });
 
-        const myRequest = new Request(url, {
+        const myRequest = new Request(url_bill, {
             method: 'GET',
             headers: myHeaders,
         });
@@ -42,7 +43,7 @@ class PoliticalNews extends Component {
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    results: result["value"]
+                    results: result["results"][0]["bills"]
                 });
             },
             // Note: it's important to handle errors here
@@ -66,18 +67,16 @@ class PoliticalNews extends Component {
         } else {
             return (
                 <>
-                {results.map((result, i) => (
+                {results.map((results, i) => (
                      <Col xs={12} xl={12}>
                         <Card>
-                            { "contentUrl" in result.image.thumbnail === true && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
-                             <Card.Body>
+                            <Card.Body>
                                  <Card.Header>
-                                     {<Card.Title>{result.name}</Card.Title> }
+                                    {<Card.Title>{results.number}</Card.Title> }
                                     <Card.Text>
-                                        <Card.Text>{result.description}</Card.Text>
-                                        <Card.Text>{result.provider.name}</Card.Text>
-                                        <Card.Text>{result.datePublished}</Card.Text>
-                                        <Card.Text>{result.ampUrl}</Card.Text>
+                                        <Card.Text>{results.title}</Card.Text>
+                                        <Card.Text>{"Sponsor: " + results.sponsor_name} </Card.Text>
+                                        <Card.Text>{"Link to bill: " + results.congressdotgov_url} </Card.Text>
                                     </Card.Text>
                                  </Card.Header>
                              </Card.Body>
@@ -90,4 +89,4 @@ class PoliticalNews extends Component {
     }
 }
 
-export default PoliticalNews;
+export default SupportedBills;
