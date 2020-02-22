@@ -89,5 +89,4 @@ class PoliticalNews extends Component {
         }
     }
 }
-
 export default PoliticalNews;

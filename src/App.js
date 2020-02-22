@@ -1,8 +1,6 @@
 import React from 'react';
 
 import { BrowserRouter, Route } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 
 import Navigation from './components/Navigation/Navigation';
 import ExampleAPI from './containers/ExampleAPI/ExampleAPI';
@@ -11,6 +9,7 @@ import UpcomingElections from './containers/UpcomingElections/UpcomingElections'
 import LocalContests from './containers/LocalContests/LocalContests';
 import PollingLocations from './containers/PollingLocations/PollingLocations';
 import LocalRepresentatives from './containers/LocalRepresentatives/LocalRepresentatives';
+import PoliticalNews from './containers/PoliticalNews/PoliticalNews';
 
 import './App.css';
 
@@ -23,15 +22,6 @@ class App extends React.Component {
             isLoaded: false,
             address: null,
         }
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({address: event.target.value});
-    }
-
-    changePage() {
-        this.setState({homeActive: false});
     }
 
     return_data = (data) => {
@@ -68,6 +58,11 @@ class App extends React.Component {
                         path="/localRepresentatives"
                         render={(props) => <LocalRepresentatives {...props} address={this.state.address}/> }
                     />
+                    <Route
+                        path="/politicalNews"
+                        render={(props) => <PoliticalNews {...props}/> }
+                    />
+
                 </div>
             </BrowserRouter>
         );

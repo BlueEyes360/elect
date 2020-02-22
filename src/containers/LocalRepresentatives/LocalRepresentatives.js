@@ -64,7 +64,7 @@ class LocalRepresentatives extends Component {
                 <>
                     {representatives.map((rep, i) => (
                         <Col xs={12} xl={12}>
-                            <Card>
+                            <Card onClick={() => alert("This is working")}>
                                 <Card.Header>
                                     { "photoUrl" in rep === true && <Card.Img variant="top" src={rep.photoUrl} /> }
                                     <Card.Title>{rep.name}</Card.Title>
@@ -74,22 +74,14 @@ class LocalRepresentatives extends Component {
                                 <Card.Body>
                                     <Card.Text>
                                         { rep.address !== undefined &&
-                                            <Card.Text>{rep.address[0].line1} 
+                                            <Card.Text>{rep.address[0].line1}
                                                 <Card.Text>{rep.address[0].line2}</Card.Text>
                                                 <Card.Text>{rep.address[0].line3}</Card.Text>
                                                 <Card.Text>{rep.address[0].city} {rep.address[0].state}</Card.Text>
                                             </Card.Text>
                                         }
-                                        { rep.urls !== undefined && <Card.Text> {rep.urls[0]} </Card.Text> }
+                                        { rep.urls !== undefined && <Card.Text><a href={rep.urls[0]}> {rep.urls[0]} </a> </Card.Text> }
                                         { rep.phones !== undefined && <Card.Text> {rep.phones[0]} </Card.Text> }
-                                        {/* <ListGroup>
-                                            {(representatives[i].candidates !== undefined) && representatives[i].candidates.map(candidate => (
-                                                <ListGroup.Item>
-                                                    <p>{candidate.name}</p>
-                                                    <p>{candidate.party}</p>
-                                                </ListGroup.Item>
-                                            ))}
-                                        </ListGroup> */}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>

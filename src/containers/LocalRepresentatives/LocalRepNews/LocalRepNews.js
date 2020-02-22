@@ -24,7 +24,8 @@ class LocalRepNews extends Component {
     // Example of an API Call
     componentDidMount() {
         let q = "Bernie Sanders"
-        let count = "1"
+
+        let count = "3"
         let offset = "0"
         let mkt = "en-US"
         let safeSearch = "moderate"
