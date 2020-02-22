@@ -12,18 +12,26 @@ import MediaQuery from 'react-responsive';
 
 import NavigationLinks from './NavigationLinks/NavigationLinks';
 
-import star from '../../assets/star_logo_v1_1.png';
+import star from '../../assets/election_logo.png';
 
 import './Navigation.css';
+
 
 const Navigation = (props) => {
 
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar id="main_div" bg="dark" variant="dark">
             <MediaQuery query="(max-device-width: 500px)">
+            <Navbar.Brand href="/" className="ml-auto">
+                    <img alt="" src={star} 
+                        className="d-inline-block align-top"
+                        id="brand"
+                    />
+                  <p>{' ELECT'}</p>  
+                </Navbar.Brand>
                 <Dropdown>
-                    <DropdownToggle variant="dark">Menu</DropdownToggle>
-                    <DropdownMenu left className="DropMenu">
+                    <DropdownToggle id="main_div" variant="dark">Menu</DropdownToggle>
+                    <DropdownMenu alignRight className="DropMenu">
                         <DropdownItem>
                             <NavLink exact to="/">Home</NavLink>
                         </DropdownItem>
@@ -44,21 +52,15 @@ const Navigation = (props) => {
                         </DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
-                <Navbar.Brand href="/" className="ml-auto">
-                    <img alt="" src={star} width="30" height="30"
-                        className="d-inline-block align-top"
-                        id="brand"
-                    />
-                    {' ELECT'}
-                </Navbar.Brand>
+                
             </MediaQuery>
             <MediaQuery query="(min-device-width: 500px)">
                 <Navbar.Brand href="/">
-                    <img alt="" src={star} width="30" height="30"
+                    <img alt="" src={star} 
                         className="d-inline-block align-top"
                         id="brand"
                     />
-                    {' ELECT'}
+                  <p>{' ELECT'}</p>
                 </Navbar.Brand>
                 <NavigationLinks />
                 {/* <SocialLinks /> */}
