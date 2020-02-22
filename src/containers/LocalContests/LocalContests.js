@@ -22,6 +22,10 @@ class LocalContests extends Component {
     componentDidMount() {
         let address = "1900 Stevens Dr. Richland WA"
 
+        if (this.props.address !== null) {
+            address = this.props.address
+        }
+
         let url = "https://www.googleapis.com/civicinfo/v2/voterinfo?key=" + GOOGLE_CIVIC_API_KEY + "&address=" + address.replace(" ", "%20") + "&electionId=2000"
 
         fetch(url)

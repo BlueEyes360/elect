@@ -13,11 +13,16 @@ class PollingLocations extends Component {
             error: null,
             isLoaded: false,
             pollingLocations: null,
+            noPollingLocs: false
         }
     }
 
     componentDidMount() {
         let address = "1900 Stevens Dr. Richland WA"
+
+        if (this.props.address !== null) {
+            address = this.props.address
+        }
 
         let url = "https://www.googleapis.com/civicinfo/v2/voterinfo?key=" + GOOGLE_CIVIC_API_KEY + "&address=" + address.replace(" ", "%20") + "&electionId=2000"
 
@@ -25,10 +30,17 @@ class PollingLocations extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-                this.setState({
-                    isLoaded: true,
-                    pollingLocations: result["pollingLocations"],
-                });
+                if (result["pollingLocations"] === undefined) {
+                    this.setState({
+                        isLoaded: true,
+                        noPollingLocs: true
+                    });
+                } else {
+                    this.setState({
+                        isLoaded: true,
+                        pollingLocations: result["pollingLocations"],
+                    });
+                }
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -43,11 +55,18 @@ class PollingLocations extends Component {
     }
 
     render() {
-        const { error, isLoaded, pollingLocations } = this.state;
+        const { error, isLoaded, pollingLocations, noPollingLocs } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
+        } else if (noPollingLocs) {
+            return <Col xs="12" xl="12">
+                    <Card>
+                        <Card.Title>No Locations Found</Card.Title>
+                        <Card.Subtitle>Google Civic API failed to return locations</Card.Subtitle>
+                    </Card>
+                </Col>;
         } else {
             return (
                 <>
