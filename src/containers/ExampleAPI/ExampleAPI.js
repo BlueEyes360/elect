@@ -5,7 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import {GOOGLE_CIVIC_API_KEY} from '../../API_keys';
+import {MICROSOFT_API_KEY} from '../../API_keys';
 
 class ExampleAPI extends Component {
 
@@ -16,27 +16,33 @@ class ExampleAPI extends Component {
             isLoaded: false,
             election: null,
             pollingLocations: null,
-            contests: null,
+            results: null,
             state: null
         }
     }
 
     // Example of an API Call
     componentDidMount() {
-        let address = "1900 Stevens Dr. Richland WA"
+        let category = "Politics"
 
-        let url = "https://www.googleapis.com/civicinfo/v2/voterinfo?key=" + GOOGLE_CIVIC_API_KEY + "&address=" + address.replace(" ", "%20") + "&electionId=2000"
+        let url = "https://api.cognitive.microsoft.com/bing/v7.0/news/?category=" + category
+        
+        const myHeaders = new Headers({
+            'Ocp-Apim-Subscription-Key': MICROSOFT_API_KEY
+        });
 
-        fetch(url)
+        const myRequest = new Request(url, {
+            method: 'GET',
+            headers: myHeaders,
+        });
+
+        fetch(myRequest)
         .then(res => res.json())
         .then(
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    election: result["election"],
-                    pollingLocations: result["pollingLocations"],
-                    contests: result["contests"],
-                    state: result["state"]
+                    results: result["value"]
                 });
             },
             // Note: it's important to handle errors here
@@ -52,7 +58,7 @@ class ExampleAPI extends Component {
     }
 
     render() {
-        const { error, isLoaded, contests } = this.state;
+        const { error, isLoaded, results } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -60,31 +66,24 @@ class ExampleAPI extends Component {
         } else {
             return (
                 <>
-                    {contests.map((contest, i) => (
-                        <Col xs={12} xl={12}>
-                            <Card>
-                                {/* <Card.Image variant="top" src={} /> */}
-                                <Card.Body>
-                                    <Card.Header>
-                                        <Card.Title>{contest.office}</Card.Title>
-                                        <Card.Subtitle>{contest.district.name}</Card.Subtitle>
-                                    </Card.Header>
+                {results.map((result, i) => (
+                     <Col xs={12} xl={12}>
+                        <Card>
+                            { "contentUrl" in result.image.thumbnail === true && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
+                             <Card.Body>
+                                 <Card.Header>
+                                     {<Card.Title>{result.name}</Card.Title> }
                                     <Card.Text>
-                                        <Card.Text>{contest.type}</Card.Text>
-                                        <Card.Text>{contest.district.scope}</Card.Text>
-                                        <ListGroup>
-                                            {(contests[i].candidates !== undefined) && contests[i].candidates.map(candidate => (
-                                                <ListGroup.Item>
-                                                    <p>{candidate.name}</p>
-                                                    <p>{candidate.party}</p>
-                                                </ListGroup.Item>
-                                            ))}
-                                        </ListGroup>
+                                        <Card.Text>{result.description}</Card.Text>
+                                        <Card.Text>{result.provider.name}</Card.Text>
+                                        <Card.Text>{result.datePublished}</Card.Text>
+                                        <Card.Text>{result.ampUrl}</Card.Text>
                                     </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))}
+                                 </Card.Header>
+                             </Card.Body>
+                         </Card>
+                    </Col>
+                ))}
                 </>
             );
         }
