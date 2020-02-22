@@ -1,0 +1,28 @@
+.SocialLinks {
+    height: 3vh;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1vmin;
+    font-style: bold;
+}
+
+a:hover,
+.DropMenu a:hover
+{
+    text-decoration: none;
+    color: orange;
+}
+
+a.active,
+.DropMenu a:active
+{
+    color: lightblue;
+}
+
+.DropMenu {
+    background-color: gray;
+    width: auto;
+}

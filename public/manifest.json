@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ELECT",
+  "name": "ELECT - Evaluating Local Elections & Candidates Tool",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import Navigation from './components/Navigation/Navigation';
+import ExampleAPI from './containers/ExampleAPI/ExampleAPI';
+import Home from './components/Home/Home';
+import UpcomingElections from './containers/UpcomingElections/UpcomingElections';
+import LocalContests from './containers/LocalContests/LocalContests';
+import PollingLocations from './containers/PollingLocations/PollingLocations';
+import LocalRepresentatives from './containers/LocalRepresentatives/LocalRepresentatives';
+
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <div className="App">
+                <Navigation />
+                <Route path="/" exact component={Home} />
+                <Route path="/test" component={ExampleAPI} />
+                <Route path="/upcomingElections" component={UpcomingElections} />
+                <Route path="/localContests" component={LocalContests} />
+                <Route path="/pollingLocations" component={PollingLocations} />
+                <Route path="/localRepresentatives" component={LocalRepresentatives} />
+            </div>
+        </BrowserRouter>
+    );
+
 }
 
 export default App;
