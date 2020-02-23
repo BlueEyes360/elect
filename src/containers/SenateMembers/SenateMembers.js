@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Modal from "react-bootstrap/Modal";
+import Button from 'react-bootstrap/Button';
 
 import {PROPUBLICA_API_KEY} from '../../API_keys';
+import Representative from '../Representative/Representative';
 
 class SenateMembers extends Component {
 
@@ -14,12 +15,53 @@ class SenateMembers extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            election: null,
-            pollingLocations: null,
+            name: "",
+            id_num: "",
             results: null,
-            state: null
+            state: null,
+            show: false
         }
+        this.showModal = this.showModal.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleOpen = this.handleOpen.bind(this);
     }
+
+    handleClose = () => {
+        this.setState({show: false})
+    }
+
+    handleOpen = () => {
+        this.setState({show: true})
+    }
+
+    showModal = (first_name, last_name, id) => {
+        let cand_data = ""
+        let full_name = first_name + " " + last_name;
+        this.setState({name: full_name, id_num: id});
+        for (var i=0; i < this.state.results.length; i++) {
+            if (this.state.results[i].id === id) {
+                cand_data = this.state.results[i];
+            }
+        }
+        this.handleOpen()
+        this.modal = (
+            <>
+                <Modal show={true}>
+                    <Modal.Body>
+                        {this.state.id_num !== "" && this.state.name !== "" && <Representative id_num={this.state.id_num} name={this.state.name} data={cand_data} />}
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="primary" onClick={this.handleClose}>
+                        Close
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
+        )
+    }
+
+    modal = (<>
+            </>)
 
     // Example of an API Call
     componentDidMount() {
@@ -27,7 +69,7 @@ class SenateMembers extends Component {
         let senate_count = "116"
         let sitting = "senate"
         let url = "https://api.propublica.org/congress/v1/" + senate_count + "/" + sitting + "/members.json"
-        
+
         const myHeaders = new Headers({
             'X-API-Key': PROPUBLICA_API_KEY
         });
@@ -67,12 +109,13 @@ class SenateMembers extends Component {
         } else {
             return (
                 <>
+                {this.state.show === true && this.modal}
                 {results.map((result, i) => (
-                     <Col xs={12} xl={12}>
-                        <Card>
+                    <Col xs={12} xl={12}>
+                        <Card onClick={() => this.showModal(result.first_name, result.last_name, result.id)}>
                             <Card.Body>
-                                 <Card.Header>
-                                     {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
+                                <Card.Header>
+                                    {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
                                     <Card.Text>
                                         {result.party === "D" && <Card.Text>Democrat</Card.Text>}
                                         {result.party === "R" && <Card.Text>Republican</Card.Text>}
@@ -81,9 +124,9 @@ class SenateMembers extends Component {
                                         <Card.Text>{result.url}</Card.Text>
                                         <Card.Text>{result.state}</Card.Text>
                                     </Card.Text>
-                                 </Card.Header>
-                             </Card.Body>
-                         </Card>
+                                </Card.Header>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 ))}
                 </>

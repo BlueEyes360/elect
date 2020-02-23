@@ -64,7 +64,7 @@ class LocalRepresentatives extends Component {
                 <>
                     {representatives.map((rep, i) => (
                         <Col xs={12} xl={12}>
-                            <Card onClick={() => alert("This is working")} className="card_layout">
+                            <Card onClick={() => alert("Clicked on a Rep!")}>
                                 <Card.Header>
                                     { "photoUrl" in rep === true && <Card.Img className="card_img" style={{"border-radius": "10px"}} variant="top" src={rep.photoUrl} /> }
                                     <Card.Title>{rep.name}</Card.Title>

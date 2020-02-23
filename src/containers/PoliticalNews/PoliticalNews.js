@@ -68,20 +68,43 @@ class PoliticalNews extends Component {
                 <>
                 {results.map((result, i) => (
                      <Col xs={12} xl={12}>
-                        <Card className="card_layout">
-                            { "contentUrl" in result.image.thumbnail === true && <Card.Img variant="top" style={{"height": "350px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={result.image.thumbnail.contentUrl} /> }
-                             <Card.Body>
-                                 <Card.Header>
-                                     {<Card.Title>{result.name}</Card.Title> }
-                                    <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>
-                                        <Card.Text style={{"margin-bottom": "0px"}}>{result.description}</Card.Text>
-                                        <Card.Text style={{"margin-bottom": "0px"}}>{result.provider.name}</Card.Text>
-                                        <Card.Text style={{"margin-bottom": "0px"}}>{result.datePublished}</Card.Text>
-                                        <Card.Text style={{"margin-bottom": "0px"}}>{result.ampUrl}</Card.Text>
-                                    </Card.Text>
-                                 </Card.Header>
-                             </Card.Body>
-                         </Card>
+
+                        {result.ampUrl !== undefined &&
+                        <a href={result.ampUrl}>
+                            <Card>
+                                { result.image !== undefined && <Card.Img variant="top" style={{"height": "350px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={result.image.thumbnail.contentUrl} /> }
+                                <Card.Body>
+                                    <Card.Header>
+                                        {<Card.Title>{result.name}</Card.Title> }
+                                        <Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>{result.description}</Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>{result.provider.name}</Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>{result.datePublished}</Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>{result.ampUrl}</Card.Text>
+                                        </Card.Text>
+                                    </Card.Header>
+                                </Card.Body>
+                            </Card>
+                        </a>
+                        }
+                        {result.ampUrl === undefined && result.url !== undefined &&
+                        <a href={result.url}>
+                            <Card>
+                                { result.image !== undefined && <Card.Img variant="top" style={{"height": "350px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={result.image.thumbnail.contentUrl} /> }
+                                <Card.Body>
+                                    <Card.Header>
+                                        {<Card.Title>{result.name}</Card.Title> }
+                                        <Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>{result.description}</Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>{result.provider.name}</Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>{result.datePublished}</Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>{result.ampUrl}</Card.Text>
+                                        </Card.Text>
+                                    </Card.Header>
+                                </Card.Body>
+                            </Card>
+                        </a>
+                        }
                     </Col>
                 ))}
                  <div class="footer-copy">

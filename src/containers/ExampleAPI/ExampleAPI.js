@@ -14,7 +14,7 @@ class ExampleAPI extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            election: null,
+            name: null,
             supported_bills: null,
             results: null,
             state: null
@@ -23,16 +23,14 @@ class ExampleAPI extends Component {
 
     // Example of an API Call
     componentDidMount() {
-        let member_id = "L000287" 
-        let type = "active"
-
-        let url_bill = "https://api.propublica.org/congress/v1/members/" + member_id + "/bills/" + type + ".json"
+        let member_id = "K000388"
+        let url = "https://api.propublica.org/congress/v1/members/" + member_id + "/private-trips.json"
         
         const myHeaders = new Headers({
             'X-API-Key': PROPUBLICA_API_KEY
         });
 
-        const myRequest = new Request(url_bill, {
+        const myRequest = new Request(url, {
             method: 'GET',
             headers: myHeaders,
         });
@@ -43,7 +41,7 @@ class ExampleAPI extends Component {
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    results: result["results"][0]["bills"]
+                    results: result["results"]
                 });
             },
             // Note: it's important to handle errors here
@@ -67,17 +65,15 @@ class ExampleAPI extends Component {
         } else {
             return (
                 <>
-                {results.map((results, i) => (
+                {results.map((result, i) => (
                      <Col xs={12} xl={12}>
                         <Card>
                             <Card.Body>
                                  <Card.Header>
-                                    {<Card.Title>{results.number}</Card.Title> }
-                                    <Card.Text>
-                                        <Card.Text>{results.title}</Card.Text>
-                                        <Card.Text>{"Sponsor: " + results.sponsor_name} </Card.Text>
-                                        <Card.Text>{"Link to bill: " + results.congressdotgov_url} </Card.Text>
-                                    </Card.Text>
+                                    {<Card.Title>{result.destination}</Card.Title> }
+                                    <Card.Text>{"Travel Times: " + result.departure_date + " to " + result.return_date}</Card.Text>
+                                    <Card.Text>{"Sponsor: " + result.sponsor}</Card.Text>
+                                    <Card.Text>{"Pdf link: " + result.pdf_url}</Card.Text>
                                  </Card.Header>
                              </Card.Body>
                          </Card>

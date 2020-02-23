@@ -7,14 +7,14 @@ import Col from 'react-bootstrap/Col';
 
 import {PROPUBLICA_API_KEY} from '../../API_keys';
 
-class SupportedBills extends Component {
+class HouseCommittees extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             error: null,
             isLoaded: false,
-            election: null,
+            name: null,
             supported_bills: null,
             results: null,
             state: null
@@ -23,16 +23,16 @@ class SupportedBills extends Component {
 
     // Example of an API Call
     componentDidMount() {
-        let member_id = "L000287" 
-        let type = "active"
+        let congress = "115"
+        let chamber = "senate"
 
-        let url_bill = "https://api.propublica.org/congress/v1/members/" + member_id + "/bills/" + type + ".json"
+        let url = "https://api.propublica.org/congress/v1/" + congress + "/" + chamber + "/committees.json"
         
         const myHeaders = new Headers({
             'X-API-Key': PROPUBLICA_API_KEY
         });
 
-        const myRequest = new Request(url_bill, {
+        const myRequest = new Request(url, {
             method: 'GET',
             headers: myHeaders,
         });
@@ -43,7 +43,7 @@ class SupportedBills extends Component {
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    results: result["results"][0]["bills"]
+                    results: result["results"][0]["committees"]
                 });
             },
             // Note: it's important to handle errors here
@@ -67,19 +67,24 @@ class SupportedBills extends Component {
         } else {
             return (
                 <>
-                {results.map((results, i) => (
-                    <Card>
-                        <Card.Body>
-                                <Card.Header>
-                                {<Card.Title>{results.number}</Card.Title> }
-                                <Card.Text>
-                                    <Card.Text>{results.title}</Card.Text>
-                                    <Card.Text>{"Sponsor: " + results.sponsor_name} </Card.Text>
-                                    <Card.Text>{"Link to bill: " + results.congressdotgov_url} </Card.Text>
-                                </Card.Text>
-                            </Card.Header>
-                        </Card.Body>
-                    </Card>
+                {results.map((result, i) => (
+                     <Col xs={12} xl={12}>
+                        <Card>
+                            <Card.Body>
+                                 <Card.Header>
+                                    {<Card.Title>{"Committee: " + result.name}</Card.Title> }
+                                    <Card.Text>{"Chair: " + result.chair}</Card.Text>
+                                    {result.chair_party === "D" && <Card.Text>Democrat</Card.Text>}
+                                    {result.chair_party === "R" && <Card.Text>Republican</Card.Text>}
+                                    <Card.Title>{"Subcommittees"}</Card.Title>
+                                    <Card.Text>{result.title}</Card.Text>
+                                    {results[i].subcommittees !== undefined && results[i].subcommittees.map((sub, i ) => (
+                                        <Card.Text>{sub.name}</Card.Text>
+                                    ))}
+                                 </Card.Header>
+                             </Card.Body>
+                         </Card>
+                    </Col>
                 ))}
                 </>
             );
@@ -87,4 +92,4 @@ class SupportedBills extends Component {
     }
 }
 
-export default SupportedBills;
+export default HouseCommittees;
