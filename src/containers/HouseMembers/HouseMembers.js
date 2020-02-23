@@ -40,27 +40,28 @@ class HouseMembers extends Component {
     showModal = (first_name, last_name, id) => {
         let cand_data = ""
         let full_name = first_name + " " + last_name;
-        this.setState({name: full_name, id_num: id});
-        for (var i=0; i < this.state.results.length; i++) {
-            if (this.state.results[i].id === id) {
-                cand_data = this.state.results[i];
+        this.setState({name: full_name, id_num: id}, () => {
+            for (var i=0; i < this.state.results.length; i++) {
+                if (this.state.results[i].id === id) {
+                    cand_data = this.state.results[i];
+                }
             }
-        }
-        this.handleOpen()
-        this.modal = (
-            <>
-                <Modal show={true}>
-                    <Modal.Body>
-                        {this.state.id_num !== "" && this.state.name !== "" && <Representative id_num={this.state.id_num} name={this.state.name} data={cand_data} />}
-                    </Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="primary" onClick={this.handleClose}>
-                        Close
-                    </Button>
-                    </Modal.Footer>
-                </Modal>
-            </>
-        )
+            this.handleOpen()
+            this.modal = (
+                <>
+                    <Modal show={true}>
+                        <Modal.Body>
+                            {this.state.id_num !== "" && this.state.name !== "" && <Representative id_num={this.state.id_num} name={this.state.name} data={cand_data} />}
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="primary" onClick={this.handleClose}>
+                            Close
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </>
+            )
+        });
     }
 
     modal = (<>
@@ -120,12 +121,11 @@ class HouseMembers extends Component {
                                 <Card.Header>
                                     {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
                                     <Card.Text>
-                                        {result.party === "D" && <Card.Text>Democrat</Card.Text>}
-                                        {result.party === "R" && <Card.Text>Republican</Card.Text>}
-                                        <Card.Text>{"ID: " + result.id}</Card.Text>
+                                        {result.party === "D" && <Card.Text>Democrat {result.state}</Card.Text>}
+                                        {result.party === "R" && <Card.Text>Republican {result.state}</Card.Text>}
                                         <Card.Text>{"Facebook: " + result.facebook_account}</Card.Text>
-                                        <Card.Text>{result.url}</Card.Text>
-                                        <Card.Text>{result.state}</Card.Text>
+                                        <Card.Text><a href={result.url}>{result.url}</a></Card.Text>
+                                        {/* <Card.Text>{result.state}</Card.Text> */}
                                     </Card.Text>
                                 </Card.Header>
                             </Card.Body>
