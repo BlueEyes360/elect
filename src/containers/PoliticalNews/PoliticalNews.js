@@ -64,8 +64,9 @@ class PoliticalNews extends Component {
         } else {
             return (
                 <>
-                {results.map((result, i) => (
-                     <Col xs={12} xl={12}>
+                {results.map((result, i) => (        
+                    
+                    <Col xs={12} xl={12}>
 
                         {result.ampUrl !== undefined &&
                         <a href={result.ampUrl}>
@@ -105,9 +106,6 @@ class PoliticalNews extends Component {
                         }
                     </Col>
                 ))}
-                 <div class="footer-copy">
-              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://smart-elect.info">Elect</a></p>
-			</div>
                 </>
             );
         }
