@@ -117,14 +117,14 @@ class HouseMembers extends Component {
                     <Col xs={12} xl={12}>
                         <Card className="card_layout" onClick={() => this.showModal(result.first_name, result.last_name, result.id)}>
                             <Card.Body>
-                                <Card.Header style={{ 'border-width': 'thin'}}>
-                                    {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
+                                <Card.Header style={{"border-style":"solid", "margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>
+                                    {<Card.Title style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
                                     <Card.Text>
-                                        {result.party === "D" && <Card.Text style={{"margin-bottom": "0px"}}>Democrat {result.state}</Card.Text>}
-                                        {result.party === "R" && <Card.Text style={{"margin-bottom": "0px"}}>Republican {result.state}</Card.Text>}
-                                        {result.party === "I" && <Card.Text style={{"margin-bottom": "0px"}}>Independent {result.state}</Card.Text>}
+                                        {result.party === "D" && <Card.Text style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>Democrat {result.state}</Card.Text>}
+                                        {result.party === "R" && <Card.Text style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>Republican {result.state}</Card.Text>}
+                                        {result.party === "I" && <Card.Text style=style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>Independent {result.state}</Card.Text>}
                                         {result.facebook_account !== null && <Card.Text style={{"margin-bottom": "0px"}}>{"Facebook: " + result.facebook_account}</Card.Text>}
-                                        <Card.Text style={{"margin-bottom": "0px"}}><a href={result.url}>{result.url}</a></Card.Text>
+                                        <Card.Text style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}><a href={result.url}>{result.url}</a></Card.Text>
                                         {/* <Card.Text>{result.state}</Card.Text> */}
                                     </Card.Text>
                                 </Card.Header>

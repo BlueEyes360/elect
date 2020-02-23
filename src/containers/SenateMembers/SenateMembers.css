@@ -11,18 +11,17 @@
     border-right-color: transparent !important;
 }
 .card-header{
-    font-weight: 800 !important;
     font-family: 'Times New Roman', Times, serif;
     background-color: whitesmoke !important;
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .list-group{
     border-radius: 10px !important;
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
 }
-
 .card_t{
     font-family: 'Times New Roman', Times, serif;
     margin: 0px;

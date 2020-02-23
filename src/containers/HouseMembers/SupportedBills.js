@@ -65,9 +65,9 @@ class SupportedBills extends Component {
             return (
                 <>
                 {results.map((results, i) => (
-                    <Card>
+                    <Card className="card_layout" >
                         <Card.Body>
-                                <Card.Header>
+                                <Card.Header className="card_h" style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>
                                 {<Card.Title>{results.number}</Card.Title> }
                                 <Card.Text>
                                     <Card.Text>{results.title}</Card.Text>

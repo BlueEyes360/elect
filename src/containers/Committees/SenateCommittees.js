@@ -67,10 +67,10 @@ class SenateCommittees extends Component {
                 <>
                 {results.map((result, i) => (
                      <Col xs={12} xl={12}>
-                        <Card>
+                        <Card className="card_layout">
                             <Card.Body>
-                                 <Card.Header>
-                                    {<Card.Title>{"Committee: " + result.name}</Card.Title> }
+                                 <Card.Header className="card_h" style={{"border-style":"solid"}}>
+                                    {<Card.Title style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Committee: " + result.name}</Card.Title> }
                                     <Card.Text>{"Chair: " + result.chair}</Card.Text>
                                     {result.chair_party === "D" && <Card.Text>Democrat</Card.Text>}
                                     {result.chair_party === "R" && <Card.Text>Republican</Card.Text>}

@@ -67,17 +67,17 @@ class HouseCommittees extends Component {
                 <>
                 {results.map((result, i) => (
                      <Col xs={12} xl={12}>
-                        <Card>
+                        <Card className="card_layout">
                             <Card.Body>
-                                 <Card.Header>
-                                    {<Card.Title>{"Committee: " + result.name}</Card.Title> }
-                                    <Card.Text>{"Chair: " + result.chair}</Card.Text>
+                                 <Card.Header className="card_h" style={{"border-style":"solid"}}>
+                                    {<Card.Title style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Committee: " + result.name}</Card.Title> }
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Chair: " + result.chair}</Card.Text>
                                     {result.chair_party === "D" && <Card.Text>Democrat</Card.Text>}
                                     {result.chair_party === "R" && <Card.Text>Republican</Card.Text>}
-                                    <Card.Title>{"Subcommittees"}</Card.Title>
-                                    <Card.Text>{result.title}</Card.Text>
+                                    <Card.Title style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Subcommittees"}</Card.Title>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.title}</Card.Text>
                                     {results[i].subcommittees !== undefined && results[i].subcommittees.map((sub, i ) => (
-                                        <Card.Text>{sub.name}</Card.Text>
+                                        <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{sub.name}</Card.Text>
                                     ))}
                                  </Card.Header>
                              </Card.Body>

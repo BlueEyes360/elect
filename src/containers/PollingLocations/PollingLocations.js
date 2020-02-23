@@ -108,16 +108,16 @@ componentDidMount() {
 
                             <Card className="card_layout" onClick={() => this.Geocoding(loc)}>
                                 <Card.Body>
-                                <Card.Header className="card_h">
+                                <Card.Header style={{"border-style":"solid"}}>
                                     <Card.Title className="card_t">{loc.address.locationName}</Card.Title>
-                                    <Card.Subtitle>{loc.address.line1}</Card.Subtitle>
+                                    <Card.Subtitle className="card_t">{loc.address.line1}</Card.Subtitle>
                                     <Card.Text className="card_t">
                                     {loc.address.city && loc.address.state && loc.address.zip}
                                     </Card.Text>
                                 </Card.Header>
                                 <Card.Text>
-                                    <Card.Text>{loc.pollingHours}</Card.Text>
-                                    <Card.Text>{loc.notes}</Card.Text>
+                                    <Card.Text className="card_t">{loc.pollingHours}</Card.Text>
+                                    <Card.Text className="card_t">{loc.notes}</Card.Text>
                                 </Card.Text>
                                 </Card.Body>
                             </Card>
