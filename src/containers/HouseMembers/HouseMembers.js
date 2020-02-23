@@ -69,7 +69,6 @@ class HouseMembers extends Component {
 
     // Example of an API Call
     componentDidMount() {
-        let category = "Politics"
         let senate_count = "116"
         let sitting = "house"
         let url = "https://api.propublica.org/congress/v1/" + senate_count + "/" + sitting + "/members.json"

@@ -64,7 +64,7 @@ const Navigation = (props) => {
             </MediaQuery>
             <MediaQuery query="(min-device-width: 500px)">
                 <Navbar.Brand href="/">
-                    <img alt="" src={star} 
+                    <img alt="" src={star}
                         className="d-inline-block align-top"
                         id="brand"
                     />
