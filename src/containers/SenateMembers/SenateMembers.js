@@ -123,6 +123,7 @@ class SenateMembers extends Component {
                                     <Card.Text className="card_t">
                                         {result.party === "D" && <Card.Text style={{"margin-bottom": "0px"}}>Democrat {result.state}</Card.Text>}
                                         {result.party === "R" && <Card.Text style={{"margin-bottom": "0px"}}>Republican {result.state}</Card.Text>}
+                                        {result.party === "I" && <Card.Text style={{"margin-bottom": "0px"}}>Independent {result.state}</Card.Text>}
                                         {result.facebook_account !== null && <Card.Text style={{"margin-bottom": "0px"}}>{"Facebook: " + result.facebook_account}</Card.Text>}
                                         <Card.Text style={{"margin-bottom": "0px"}}><a href={result.url}>{result.url}</a></Card.Text>
                                     </Card.Text>
