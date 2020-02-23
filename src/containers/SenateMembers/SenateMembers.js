@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
 
 import {PROPUBLICA_API_KEY} from '../../API_keys';
+
 import Representative from '../Representative/Representative';
 
 class SenateMembers extends Component {
@@ -37,27 +38,30 @@ class SenateMembers extends Component {
     showModal = (first_name, last_name, id) => {
         let cand_data = ""
         let full_name = first_name + " " + last_name;
-        this.setState({name: full_name, id_num: id});
-        for (var i=0; i < this.state.results.length; i++) {
-            if (this.state.results[i].id === id) {
-                cand_data = this.state.results[i];
+        this.setState({name: full_name, id_num: id}, () => {
+            for (var i=0; i < this.state.results.length; i++) {
+                if (this.state.results[i].id === id) {
+                    cand_data = this.state.results[i];
+                }
             }
-        }
-        this.handleOpen()
-        this.modal = (
-            <>
-                <Modal show={true}>
-                    <Modal.Body>
-                        {this.state.id_num !== "" && this.state.name !== "" && <Representative id_num={this.state.id_num} name={this.state.name} data={cand_data} />}
-                    </Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="primary" onClick={this.handleClose}>
-                        Close
-                    </Button>
-                    </Modal.Footer>
-                </Modal>
-            </>
-        )
+            this.handleOpen()
+
+            this.modal = (
+                <>
+                    <Modal show={true}>
+                        <Modal.Body>
+                            {this.state.id_num !== "" && this.state.name !== "" && <Representative id_num={this.state.id_num} name={this.state.name} data={cand_data} />}
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="primary" onClick={this.handleClose}>
+                            Close
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </>
+            )
+            }
+        );
     }
 
     modal = (<>
@@ -117,12 +121,10 @@ class SenateMembers extends Component {
                                 <Card.Header>
                                     {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
                                     <Card.Text className="card_t">
-                                        {result.party === "D" && <Card.Text style={{"margin-bottom": "0px"}}>Democrat</Card.Text>}
-                                        {result.party === "R" && <Card.Text style={{"margin-bottom": "0px"}}>Republican</Card.Text>}
-                                        <Card.Text style={{"margin-bottom": "0px"}}>{"ID: " + result.id}</Card.Text>
+                                        {result.party === "D" && <Card.Text style={{"margin-bottom": "0px"}}>Democrat {result.state}</Card.Text>}
+                                        {result.party === "R" && <Card.Text style={{"margin-bottom": "0px"}}>Republican {result.state}</Card.Text>}
                                         <Card.Text style={{"margin-bottom": "0px"}}>{"Facebook: " + result.facebook_account}</Card.Text>
-                                        <Card.Text style={{"margin-bottom": "0px"}}>{result.url}</Card.Text>
-                                        <Card.Text style={{"margin-bottom": "0px"}}>{result.state}</Card.Text>
+                                        <Card.Text style={{"margin-bottom": "0px"}}><a href={result.url}>{result.url}</a></Card.Text>
                                     </Card.Text>
                                 </Card.Header>
                             </Card.Body>
