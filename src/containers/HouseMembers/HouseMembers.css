@@ -10,9 +10,12 @@
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
 }
-.card-header{
+div.card-header{
     font-family: 'Times New Roman', Times, serif;
     background-color: whitesmoke !important;
+    border: rgba(0, 0, 0, 0.19)!important;
+    border-width: thin;
+
 }
 .card_t{
     font-family: 'Times New Roman', Times, serif;
@@ -33,9 +36,6 @@
     border-radius: 10px !important;
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
-}
-.card-title{
-    font-weight: 700 !important;
 }
 div.col-xl-12.col-12{
     /* background-image: url("../../assets/background7.jpg"); */

@@ -116,15 +116,15 @@ class SenateMembers extends Component {
                 {this.state.show === true && this.modal}
                 {results.map((result, i) => (
                     <Col xs={12} xl={12}>
-                        <Card onClick={() => this.showModal(result.first_name, result.last_name, result.id)}>
+                        <Card className="card_layout" onClick={() => this.showModal(result.first_name, result.last_name, result.id)}>
                             <Card.Body>
                                 <Card.Header>
                                     {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
-                                    <Card.Text>
-                                        {result.party === "D" && <Card.Text>Democrat {result.state}</Card.Text>}
-                                        {result.party === "R" && <Card.Text>Republican {result.state}</Card.Text>}
-                                        {result.facebook_account !== null && <Card.Text>{"Facebook: " + result.facebook_account}</Card.Text>}
-                                        <Card.Text><a href={result.url}>{result.url}</a></Card.Text>
+                                    <Card.Text className="card_t">
+                                        {result.party === "D" && <Card.Text style={{"margin-bottom": "0px"}}>Democrat {result.state}</Card.Text>}
+                                        {result.party === "R" && <Card.Text style={{"margin-bottom": "0px"}}>Republican {result.state}</Card.Text>}
+                                        {result.facebook_account !== null && <Card.Text style={{"margin-bottom": "0px"}}>{"Facebook: " + result.facebook_account}</Card.Text>}
+                                        <Card.Text style={{"margin-bottom": "0px"}}><a href={result.url}>{result.url}</a></Card.Text>
                                     </Card.Text>
                                 </Card.Header>
                             </Card.Body>
@@ -136,5 +136,4 @@ class SenateMembers extends Component {
         }
     }
 }
-
 export default SenateMembers;

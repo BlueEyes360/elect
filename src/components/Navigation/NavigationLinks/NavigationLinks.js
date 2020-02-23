@@ -11,9 +11,6 @@ const NavigationLinks = (props) => {
                 <NavLink exact to="/">Home</NavLink>
             </Nav.Item>
             <Nav.Item>
-                <NavLink to="/upcomingElections">Upcoming Elections</NavLink>
-            </Nav.Item>
-            <Nav.Item>
                 <NavLink to="/localContests">Local Contests</NavLink>
             </Nav.Item>
             <Nav.Item>
@@ -23,7 +20,19 @@ const NavigationLinks = (props) => {
                 <NavLink to="/localRepresentatives">Local Representatives</NavLink>
             </Nav.Item>
             <Nav.Item>
-                <NavLink to="/test">Test</NavLink>
+                <NavLink to="/senate">Current Senate Members</NavLink>
+            </Nav.Item>
+            <Nav.Item>
+                <NavLink to="/houseOfReps">Current House Members</NavLink>
+            </Nav.Item>
+            <Nav.Item>
+                <NavLink to="/houseCommittees">House Committees and Members</NavLink>
+            </Nav.Item>
+            <Nav.Item>
+                <NavLink to="/senateCommittees">Senate Committees and Members</NavLink>
+            </Nav.Item>
+            <Nav.Item>
+                <NavLink to="/jointCommittees">Join Committees and Members</NavLink>
             </Nav.Item>
         </Nav>
     )

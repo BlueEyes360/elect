@@ -10,9 +10,12 @@ import LocalContests from './containers/LocalContests/LocalContests';
 import PollingLocations from './containers/PollingLocations/PollingLocations';
 import LocalRepresentatives from './containers/LocalRepresentatives/LocalRepresentatives';
 import PoliticalNews from './containers/PoliticalNews/PoliticalNews';
-import Representative from './containers/Representative/Representative';
 import HouseMembers from './containers/HouseMembers/HouseMembers';
 import SenateMembers from './containers/SenateMembers/SenateMembers';
+import HouseCommittees from './containers/Committees/HouseCommittees';
+import SenateCommittees from './containers/Committees/SenateCommittees';
+import JointCommittees from './containers/Committees/JointCommittees';
+
 
 import './App.css';
 class App extends React.Component {
@@ -71,6 +74,18 @@ class App extends React.Component {
                     <Route
                         path="/houseOfReps"
                         render={(props) => <HouseMembers {...props}/> }
+                    />
+                    <Route
+                        path="/houseCommittees"
+                        render={(props) => <HouseCommittees {...props}/> }
+                    />
+                    <Route
+                        path="/senateCommittees"
+                        render={(props) => <SenateCommittees {...props}/> }
+                    />
+                    <Route
+                        path="/jointCommittees"
+                        render={(props) => <JointCommittees {...props}/> }
                     />
 
                 </div>
