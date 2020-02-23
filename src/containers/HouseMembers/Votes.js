@@ -66,14 +66,14 @@ class Votes extends Component {
             return (
                 <>
                 {results.map((result, i) => (
-                    <Card>
+                    <Card className="card_layout">
                         <Card.Body>
-                                <Card.Header>
+                                <Card.Header  className="card_h" style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>
                                 {<Card.Title>{"Bill: " + result.bill.title}</Card.Title> }
-                                <Card.Text>{result.description}</Card.Text>
-                                <Card.Text>{"Latest Action: " + result.bill.latest_action}</Card.Text>
-                                <Card.Text>{"Position: Voted " + result.position}</Card.Text>
-                                <Card.Text>{"Result: " + result.result + " on " + result.date}</Card.Text>
+                                <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.description}</Card.Text>
+                                <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Latest Action: " + result.bill.latest_action}</Card.Text>
+                                <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Position: Voted " + result.position}</Card.Text>
+                                <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Result: " + result.result + " on " + result.date}</Card.Text>
                             </Card.Header>
                         </Card.Body>
                     </Card>

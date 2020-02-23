@@ -118,7 +118,7 @@ class SenateMembers extends Component {
                     <Col xs={12} xl={12}>
                         <Card className="card_layout" onClick={() => this.showModal(result.first_name, result.last_name, result.id)}>
                             <Card.Body>
-                                <Card.Header>
+                                <Card.Header style={{"border-style":"solid"}}>
                                     {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
                                     <Card.Text className="card_t">
                                         {result.party === "D" && <Card.Text style={{"margin-bottom": "0px"}}>Democrat {result.state}</Card.Text>}

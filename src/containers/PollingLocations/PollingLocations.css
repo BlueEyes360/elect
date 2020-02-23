@@ -11,15 +11,22 @@
     border-right-color: transparent !important;
 }
 .card-header{
-    font-weight: 800 !important;
     font-family: 'Times New Roman', Times, serif;
     background-color: whitesmoke !important;
     border-radius: 10px !important;
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
 }
 .card_t{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+}
+.card_t p{
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
 }
 .list-group{
     border-radius: 10px !important;
@@ -35,9 +42,6 @@
     border-radius: 10px !important;
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
-}
-.card-title{
-    font-weight: 700 !important;
 }
 div.col-xl-12.col-12{
     /* background-image: url("../../assets/background7.jpg"); */
