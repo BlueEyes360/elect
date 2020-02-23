@@ -115,17 +115,17 @@ class HouseMembers extends Component {
                 {this.state.show === true && this.modal}
                 {results.map((result, i) => (
                     <Col xs={12} xl={12}>
-                        <Card onClick={() => this.showModal(result.first_name, result.last_name, result.id)}>
+                        <Card className="card_layout" onClick={() => this.showModal(result.first_name, result.last_name, result.id)}>
                             <Card.Body>
-                                <Card.Header>
+                                <Card.Header style={{ 'border-width': 'thin'}}>
                                     {<Card.Title>{result.title + " " + result.first_name + " " + result.last_name}</Card.Title> }
-                                    <Card.Text>
-                                        {result.party === "D" && <Card.Text>Democrat</Card.Text>}
-                                        {result.party === "R" && <Card.Text>Republican</Card.Text>}
-                                        <Card.Text>{"ID: " + result.id}</Card.Text>
-                                        <Card.Text>{"Facebook: " + result.facebook_account}</Card.Text>
-                                        <Card.Text>{result.url}</Card.Text>
-                                        <Card.Text>{result.state}</Card.Text>
+                                    <Card.Text className="card_t">
+                                        {result.party === "D" && <Card.Text style={{"margin-bottom": "0px"}}>Democrat</Card.Text>}
+                                        {result.party === "R" && <Card.Text style={{"margin-bottom": "0px"}}>Republican</Card.Text>}
+                                        <Card.Text style={{"margin-bottom": "0px"}}>{"ID: " + result.id}</Card.Text>
+                                        <Card.Text style={{"margin-bottom": "0px"}}>{"Facebook: " + result.facebook_account}</Card.Text>
+                                        <Card.Text style={{"margin-bottom": "0px"}}>{result.url}</Card.Text>
+                                        <Card.Text style={{"margin-bottom": "0px"}}>{result.state}</Card.Text>
                                     </Card.Text>
                                 </Card.Header>
                             </Card.Body>

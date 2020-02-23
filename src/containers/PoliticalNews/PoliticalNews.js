@@ -71,7 +71,7 @@ class PoliticalNews extends Component {
 
                         {result.ampUrl !== undefined &&
                         <a href={result.ampUrl}>
-                            <Card>
+                            <Card className="card_layout">
                                 { result.image !== undefined && <Card.Img variant="top" style={{"height": "350px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={result.image.thumbnail.contentUrl} /> }
                                 <Card.Body>
                                     <Card.Header>
