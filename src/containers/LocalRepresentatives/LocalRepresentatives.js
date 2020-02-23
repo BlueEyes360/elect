@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {GOOGLE_CIVIC_API_KEY} from '../../API_keys';
-
-import ballot from '../../assets/ballot.png';
 
 class LocalRepresentatives extends Component {
 
@@ -64,15 +60,15 @@ class LocalRepresentatives extends Component {
                 <>
                     {representatives.map((rep, i) => (
                         <Col xs={12} xl={12}>
-                            <Card onClick={() => alert("Clicked on a Rep!")}>
+                            <Card className="card_layout">
                                 <Card.Header>
                                     { "photoUrl" in rep === true && <Card.Img className="card_img" style={{"border-radius": "10px"}} variant="top" src={rep.photoUrl} /> }
                                     <Card.Title>{rep.name}</Card.Title>
                                     { offices[i] !== undefined && <Card.Subtitle>{offices[i].name}</Card.Subtitle>}
                                     <Card.Subtitle>{rep.party}</Card.Subtitle>
                                 </Card.Header>
-                                <Card.Body style={{"margin": "0px", "padding":"0px"}}>
-                                    <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>
+                                <Card.Body >
+                                    <Card.Text className="card_t">
                                         { rep.address !== undefined &&
                                             <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>{rep.address[0].line1}
                                                 <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>{rep.address[0].line2}</Card.Text>
@@ -88,7 +84,7 @@ class LocalRepresentatives extends Component {
                         </Col>
                     ))}
                     <div class="footer-copy">
-              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://smart-elect.info">Elect</a></p>
 			</div>
                 </>
             );

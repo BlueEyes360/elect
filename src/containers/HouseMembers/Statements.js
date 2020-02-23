@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {PROPUBLICA_API_KEY} from '../../API_keys';
-
 class Statements extends Component {
 
     constructor(props) {
@@ -60,6 +57,12 @@ class Statements extends Component {
 
     render() {
         const { error, isLoaded, results } = this.state;
+        const card_ha={
+            fontFamily: "Times New Roman, Times, serif !important",
+            margin: "0px !important",
+            padding: "0px !important"
+        }
+        
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -69,15 +72,15 @@ class Statements extends Component {
                 <>
                 {results.map((result, i) => (
                      <Col xs={12} xl={12}>
-                        <Card>
+                        <Card className="card_layout">
                             <Card.Body>
-                                 <Card.Header>
-                                    {<Card.Title>{"Statement Type:" + result.type}</Card.Title> }
-                                    <Card.Text>{result.date}</Card.Text>
-                                    <Card.Text>{result.title}</Card.Text>
-                                    <Card.Text>{"State: " + result.state} </Card.Text>
-                                    <Card.Text>{"Link to full statement: " + result.url} </Card.Text>
-                                    {result.subjects[0] !== undefined && <Card.Text>{"Subjects: " + result.subjects[0].name}</Card.Text>}
+                                 <Card.Header className="card_h" style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>
+                                    {<Card.Title style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Statement Type: " + result.statement_type}</Card.Title> }
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.date}</Card.Text>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.title}</Card.Text>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"State: " + result.state} </Card.Text>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Link to full statement: " + result.url} </Card.Text>
+                                    {result.subjects[0] !== undefined && <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Subjects: " + result.subjects[0].name}</Card.Text>}
                                  </Card.Header>
                              </Card.Body>
                          </Card>

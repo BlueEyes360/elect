@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card, { CardHeader } from 'react-bootstrap/Card';
+import Card from 'react-bootstrap/Card';
 
 import LocalRepNews from '../LocalRepresentatives/LocalRepNews/LocalRepNews';
 import SupportedBills from '../HouseMembers/SupportedBills';
@@ -7,7 +7,6 @@ import Votes from '../HouseMembers/Votes';
 import Travel from '../HouseMembers/Travel';
 import Statements from '../HouseMembers/Statements';
 import Accordion from 'react-bootstrap/Accordion'
-import Button from 'react-bootstrap/Button'
 
 class Representative extends Component {
     constructor(props) {
@@ -20,16 +19,16 @@ class Representative extends Component {
     render() {
         return (
             <Accordion>
-                <Card>
-                    <Card.Header>
+                <Card className="card_layout"> 
+                    <Card.Header className="card_h" >
                         <Card.Img variant="Top" src="" />
-                        <Card.Title>{this.props.name}</Card.Title>
-                        <Card.Subtitle>{this.props.data.title}</Card.Subtitle>
+                        <Card.Title style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{this.props.name}</Card.Title>
+                        <Card.Subtitle style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{this.props.data.title}</Card.Subtitle>
                     </Card.Header>
                     <Card.Body>
-                        <Card.Text>{this.props.data.office}</Card.Text>
-                        <Card.Text>{this.props.data.url}</Card.Text>
-                        <Card.Text>{this.props.data.phone}</Card.Text>
+                        <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{this.props.data.office}</Card.Text>
+                        <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{this.props.data.url}</Card.Text>
+                        <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{this.props.data.phone}</Card.Text>
                     </Card.Body>
                 </Card>
                 <Card>

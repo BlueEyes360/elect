@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {MICROSOFT_API_KEY} from '../../API_keys';
@@ -99,7 +97,7 @@ class PoliticalNews extends Component {
                         {result.ampUrl !== undefined &&
                         <a href={result.ampUrl}>
                             <Card>
-                                { images[i] !== undefined && <Card.Img variant="top"  src={images[i].value[0].contentUrl} /> }
+                                { images[i] !== undefined && <Card.Img variant="top" style={{"height": "350px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={images[i].value[0].contentUrl} /> }
                                 <Card.Body>
                                     <Card.Header>
                                         {<Card.Title>{result.name}</Card.Title> }
@@ -134,9 +132,6 @@ class PoliticalNews extends Component {
                         }
                     </Col>
                 ))}
-                 <div class="footer-copy">
-              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
-			</div>
                 </>
             );
         }

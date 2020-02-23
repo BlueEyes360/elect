@@ -65,7 +65,7 @@ class LocalContests extends Component {
                                 <Card.Body>
                                     { contest.type === "General" &&
                                         <>
-                                            <Card.Header className="card_h">
+                                            <Card.Header className="card_h" style={{"border-style":"solid"}}>
                                                 <Card.Title>{contest.office}</Card.Title>
                                                 <Card.Subtitle>{contest.district.name}</Card.Subtitle>
                                             </Card.Header>
@@ -84,7 +84,7 @@ class LocalContests extends Component {
                                     }
                                     { contest.type === "Referendum" &&
                                         <>
-                                            <Card.Header className="card_h">
+                                            <Card.Header className="card_h" style={{"border-style":"solid"}}>
                                                 <Card.Title>{contest.referendumTitle}</Card.Title>
                                                 <Card.Subtitle>{contest.district.name} {contest.district.scope}</Card.Subtitle>
                                             </Card.Header>
@@ -94,7 +94,7 @@ class LocalContests extends Component {
                                     }
                                     { contest.type === "primary" &&
                                         <>
-                                            <Card.Header className="card_h">
+                                            <Card.Header className="card_h" style={{"border-style":"solid"}}>
                                                 <Card.Title>{contest.office}</Card.Title>
                                                 <Card.Subtitle>{contest.type} {contest.district.name}</Card.Subtitle>
                                             </Card.Header>
@@ -116,7 +116,7 @@ class LocalContests extends Component {
                         </Col>
                     ))}
                     <div class="footer-copy">
-              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://smart-elect.info">Elect</a></p>
 			</div>
                 </>
             );

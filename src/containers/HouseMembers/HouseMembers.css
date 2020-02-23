@@ -10,11 +10,10 @@
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
 }
-.card-header{
+div.card-header{
     font-family: 'Times New Roman', Times, serif;
     background-color: whitesmoke !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   
+    border: rgba(0, 0, 0, 0.19)!important;
 }
 .card_t{
     font-family: 'Times New Roman', Times, serif;
@@ -36,14 +35,13 @@
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
 }
-.card-title{
-    font-weight: 700 !important;
-}
-div.col-xl-12.col-12{
+.col-xl-12.col-12 div{
     /* background-image: url("../../assets/background7.jpg"); */
     margin-top: 0px;
     padding-top: 0px;
     margin-bottom: 0px;
     padding-bottom: 0px;
 }
-    
+.card-header {
+    font-weight: normal !important;
+}    

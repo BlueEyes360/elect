@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
 
 import {MICROSOFT_API_KEY} from '../../../API_keys';
 
@@ -74,16 +73,16 @@ class LocalRepNews extends Component {
             return (
                 <>
                 {results.map((result, i) => (
-                    <Card>
+                    <Card className="card_layout">
                         {result.image.thumbnail !== undefined && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
                             <Card.Body>
                                 <Card.Header>
-                                    {<Card.Title>{result.name}</Card.Title> }
+                                    {<Card.Title style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.name}</Card.Title> }
                                 <Card.Text>
-                                    <Card.Text>{result.description}</Card.Text>
-                                    <Card.Text>{result.provider.name}</Card.Text>
-                                    <Card.Text>{result.datePublished}</Card.Text>
-                                    <Card.Text>{result.ampUrl}</Card.Text>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.description}</Card.Text>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.provider.name}</Card.Text>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.datePublished}</Card.Text>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.ampUrl}</Card.Text>
                                 </Card.Text>
                             </Card.Header>
                         </Card.Body>

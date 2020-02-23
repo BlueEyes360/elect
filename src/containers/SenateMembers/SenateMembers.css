@@ -13,31 +13,19 @@
 .card-header{
     font-family: 'Times New Roman', Times, serif;
     background-color: whitesmoke !important;
+    border-left-color:lightslategray !important;
+    border-right-color: transparent !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   
-}
-.card_t{
-    font-family: 'Times New Roman', Times, serif;
-    margin: 0px;
-    padding: 0px;
 }
 .list-group{
     border-radius: 10px !important;
     border-left-color:lightslategray !important;
     border-right-color: transparent !important;
 }
-.list-group-item:first-child{
-    border-radius: 10px !important;
-    border-left-color:lightslategray !important;
-    border-right-color: transparent !important;
-}
-.list-group-item:last-child{
-    border-radius: 10px !important;
-    border-left-color:lightslategray !important;
-    border-right-color: transparent !important;
-}
-.card-title{
-    font-weight: 700 !important;
+.card_t{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0px;
+    padding: 0px;
 }
 div.col-xl-12.col-12{
     /* background-image: url("../../assets/background7.jpg"); */

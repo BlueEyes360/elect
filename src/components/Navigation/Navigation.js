@@ -23,20 +23,17 @@ const Navigation = (props) => {
         <Navbar id="main_div" bg="dark" variant="dark">
             <MediaQuery query="(max-device-width: 500px)">
             <Navbar.Brand href="/" className="ml-auto">
-                    <img alt="" src={star} 
+                    <img alt="" src={star}
                         className="d-inline-block align-top"
                         id="brand"
                     />
-                  <p>{' ELECT'}</p>  
+                    <p>{' ELECT'}</p>
                 </Navbar.Brand>
                 <Dropdown>
                     <DropdownToggle id="main_div" variant="dark">Menu</DropdownToggle>
                     <DropdownMenu alignRight className="DropMenu">
                         <DropdownItem>
                             <NavLink exact to="/">Home</NavLink>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <NavLink to="/upcomingElections">Upcoming Elections</NavLink>
                         </DropdownItem>
                         <DropdownItem>
                             <NavLink to="/localContests">Local Contests</NavLink>
@@ -48,31 +45,32 @@ const Navigation = (props) => {
                             <NavLink to="/localRepresentatives">Local Representatives</NavLink>
                         </DropdownItem>
                         <DropdownItem>
-                            <NavLink to="/politicalNews">Political News</NavLink>
-                        </DropdownItem>
-                        <DropdownItem>
                             <NavLink to="/senate">Current Senate Members</NavLink>
                         </DropdownItem>
                         <DropdownItem>
                             <NavLink to="/houseOfReps">Current House Members</NavLink>
                         </DropdownItem>
                         <DropdownItem>
-                            <NavLink to="/test">Test</NavLink>
+                            <NavLink to="/houseCommittees">House Committees and Members</NavLink>
+                        </DropdownItem>
+                        <DropdownItem>
+                            <NavLink to="/senateCommittees">Senate Committees and Members</NavLink>
+                        </DropdownItem>
+                        <DropdownItem>
+                            <NavLink to="/jointCommittees">Joint Committees and Members</NavLink>
                         </DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
-                
             </MediaQuery>
             <MediaQuery query="(min-device-width: 500px)">
                 <Navbar.Brand href="/">
-                    <img alt="" src={star} 
+                    <img alt="" src={star}
                         className="d-inline-block align-top"
                         id="brand"
                     />
-                  <p>{' ELECT'}</p>
+                    <p>{' ELECT'}</p>
                 </Navbar.Brand>
                 <NavigationLinks />
-                {/* <SocialLinks /> */}
             </MediaQuery>
         </Navbar>
     )

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-import { StaticGoogleMap, Marker, Path } from "react-static-google-map";
+import { StaticGoogleMap, Marker } from "react-static-google-map";
 
 import { GOOGLE_CIVIC_API_KEY } from "../../API_keys";
 import { GOOGLE_MAPS_API_KEY } from "../../API_keys";
@@ -108,23 +108,23 @@ componentDidMount() {
 
                             <Card className="card_layout" onClick={() => this.Geocoding(loc)}>
                                 <Card.Body>
-                                <Card.Header className="card_h">
+                                <Card.Header style={{"border-style":"solid"}}>
                                     <Card.Title className="card_t">{loc.address.locationName}</Card.Title>
-                                    <Card.Subtitle>{loc.address.line1}</Card.Subtitle>
+                                    <Card.Subtitle className="card_t">{loc.address.line1}</Card.Subtitle>
                                     <Card.Text className="card_t">
                                     {loc.address.city && loc.address.state && loc.address.zip}
                                     </Card.Text>
                                 </Card.Header>
                                 <Card.Text>
-                                    <Card.Text>{loc.pollingHours}</Card.Text>
-                                    <Card.Text>{loc.notes}</Card.Text>
+                                    <Card.Text className="card_t">{loc.pollingHours}</Card.Text>
+                                    <Card.Text className="card_t">{loc.notes}</Card.Text>
                                 </Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
                     ))}
                     <div class="footer-copy">
-              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://smart-elect.info">Elect</a></p>
 			</div>
                 </>
             );

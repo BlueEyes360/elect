@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {PROPUBLICA_API_KEY} from '../../API_keys';
@@ -67,9 +65,9 @@ class Travel extends Component {
                 <>
                 {results.map((result, i) => (
                      <Col xs={12} xl={12}>
-                        <Card>
+                        <Card className="card_layout">
                             <Card.Body>
-                                 <Card.Header>
+                                 <Card.Header className="card_h" style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>
                                     {<Card.Title>{result.destination}</Card.Title> }
                                     <Card.Text>{"Travel Times: " + result.departure_date + " to " + result.return_date}</Card.Text>
                                     <Card.Text>{"Sponsor: " + result.sponsor}</Card.Text>
