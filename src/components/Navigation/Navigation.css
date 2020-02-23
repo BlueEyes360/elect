@@ -26,3 +26,27 @@ a.active,
     background-color: gray;
     width: auto;
 }
+#main_div{
+    /* background-color: darkblue !important; */
+    height: 80px;
+    
+}
+.ml-auto{
+    margin-right: 110px !important;
+    
+  }
+#elect_logo{
+    height: 140px !important;
+    width: 140px !important;
+}
+.navbar-brand{
+    font-size: 60px !important;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 35px;
+    }
+#brand{
+    
+    height: 210px;
+    width: 210px;
+    margin-top: 50px;
+}
