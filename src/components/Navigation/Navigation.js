@@ -57,7 +57,7 @@ const Navigation = (props) => {
                             <NavLink to="/senateCommittees">Senate Committees and Members</NavLink>
                         </DropdownItem>
                         <DropdownItem>
-                            <NavLink to="/jointCommittees">Join Committees and Members</NavLink>
+                            <NavLink to="/jointCommittees">Joint Committees and Members</NavLink>
                         </DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
@@ -71,7 +71,6 @@ const Navigation = (props) => {
                     <p>{' ELECT'}</p>
                 </Navbar.Brand>
                 <NavigationLinks />
-                {/* <SocialLinks /> */}
             </MediaQuery>
         </Navbar>
     )

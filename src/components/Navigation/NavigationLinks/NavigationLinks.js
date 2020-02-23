@@ -32,7 +32,7 @@ const NavigationLinks = (props) => {
                 <NavLink to="/senateCommittees">Senate Committees and Members</NavLink>
             </Nav.Item>
             <Nav.Item>
-                <NavLink to="/jointCommittees">Join Committees and Members</NavLink>
+                <NavLink to="/jointCommittees">Joint Committees and Members</NavLink>
             </Nav.Item>
         </Nav>
     )
