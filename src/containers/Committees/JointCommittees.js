@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {PROPUBLICA_API_KEY} from '../../API_keys';

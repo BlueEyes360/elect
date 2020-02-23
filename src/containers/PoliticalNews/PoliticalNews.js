@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {MICROSOFT_API_KEY} from '../../API_keys';
@@ -108,7 +106,7 @@ class PoliticalNews extends Component {
                     </Col>
                 ))}
                  <div class="footer-copy">
-              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://smart-elect.info">Elect</a></p>
 			</div>
                 </>
             );

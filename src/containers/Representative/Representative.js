@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card, { CardHeader } from 'react-bootstrap/Card';
+import Card from 'react-bootstrap/Card';
 
 import LocalRepNews from '../LocalRepresentatives/LocalRepNews/LocalRepNews';
 import SupportedBills from '../HouseMembers/SupportedBills';
@@ -7,7 +7,6 @@ import Votes from '../HouseMembers/Votes';
 import Travel from '../HouseMembers/Travel';
 import Statements from '../HouseMembers/Statements';
 import Accordion from 'react-bootstrap/Accordion'
-import Button from 'react-bootstrap/Button'
 
 class Representative extends Component {
     constructor(props) {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
 
 import {MICROSOFT_API_KEY} from '../../../API_keys';
 
