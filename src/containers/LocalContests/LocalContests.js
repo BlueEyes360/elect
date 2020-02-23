@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Col from 'react-bootstrap/Col';
-
+import './LocalContests.css';
 import {GOOGLE_CIVIC_API_KEY} from '../../API_keys';
 
 class LocalContests extends Component {
@@ -60,16 +60,16 @@ class LocalContests extends Component {
                 <>
                     {contests.map((contest, i) => (
                         <Col xs={12} xl={12}>
-                            <Card>
+                            <Card className="card_layout">
                                 {/* <Card.Image variant="top" src={} /> */}
                                 <Card.Body>
                                     { contest.type === "General" &&
                                         <>
-                                            <Card.Header>
+                                            <Card.Header className="card_h">
                                                 <Card.Title>{contest.office}</Card.Title>
                                                 <Card.Subtitle>{contest.district.name}</Card.Subtitle>
                                             </Card.Header>
-                                            <Card.Text>
+                                            <Card.Text className="card_t">
                                                 <Card.Text>{contest.type} {contest.district.scope}</Card.Text>
                                                 <ListGroup>
                                                     {(contests[i].candidates !== undefined) && contests[i].candidates.map(candidate => (
@@ -84,37 +84,40 @@ class LocalContests extends Component {
                                     }
                                     { contest.type === "Referendum" &&
                                         <>
-                                            <Card.Header>
+                                            <Card.Header className="card_h">
                                                 <Card.Title>{contest.referendumTitle}</Card.Title>
                                                 <Card.Subtitle>{contest.district.name} {contest.district.scope}</Card.Subtitle>
                                             </Card.Header>
-                                            <Card.Text>{contest.referendumUrl}</Card.Text>
+                                            <Card.Text className="card_t">{contest.referendumUrl}</Card.Text>
                                             <Card.Text>Source: {contest.sources[0].name}</Card.Text>
                                         </>
                                     }
                                     { contest.type === "primary" &&
                                         <>
-                                            <Card.Header>
+                                            <Card.Header className="card_h">
                                                 <Card.Title>{contest.office}</Card.Title>
                                                 <Card.Subtitle>{contest.type} {contest.district.name}</Card.Subtitle>
                                             </Card.Header>
-                                            <Card.Text>{contest.referendumUrl}</Card.Text>
-                                            <ListGroup>
+                                            <Card.Text className="card_t">{contest.referendumUrl}</Card.Text>
+                                            <ListGroup >
                                                 {(contests[i].candidates !== undefined) && contests[i].candidates.map(candidate => (
-                                                    <ListGroup.Item>
+                                                    <ListGroup.Item style={{"margin-bottom": "0px","padding":"0px !important"}}>
                                                         {candidate.photoUrl && <Card.Img variant="top" src={candidate.photoUrl} />  }
-                                                        <p>{candidate.name}</p>
-                                                        <p>{candidate.party}</p>
+                                                        <p style={{"margin-bottom": "0px !important","padding":"0px !important"}}>{candidate.name}</p>
+                                                        <p style={{"margin-bottom": "0px !important","padding":"0px !important"}}>{candidate.party}</p>
                                                     </ListGroup.Item>
                                                 ))}
                                             </ListGroup>
-                                            <Card.Text>Source: {contest.sources[0].name}</Card.Text>
+                                            <Card.Text style={{"margin-bottom": "0px"}}>Source: {contest.sources[0].name}</Card.Text>
                                         </>
                                     }
                                 </Card.Body>
                             </Card>
                         </Col>
                     ))}
+                    <div class="footer-copy">
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+			</div>
                 </>
             );
         }

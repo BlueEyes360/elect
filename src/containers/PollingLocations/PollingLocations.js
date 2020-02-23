@@ -62,8 +62,8 @@ class PollingLocations extends Component {
             return <div>Loading...</div>;
         } else if (noPollingLocs) {
             return <Col xs="12" xl="12">
-                    <Card>
-                        <Card.Title>No Locations Found</Card.Title>
+                    <Card className="card_layout">
+                        <Card.Title className="card_t">No Locations Found</Card.Title>
                         <Card.Subtitle>Google Civic API failed to return locations</Card.Subtitle>
                     </Card>
                 </Col>;
@@ -72,14 +72,14 @@ class PollingLocations extends Component {
                 <>
                     {pollingLocations.map((loc, i) => (
                         <Col xs={12} xl={12}>
-                            <Card>
+                            <Card className="card_layout">
                                 <Card.Body>
-                                    <Card.Header>
-                                        <Card.Title>{loc.address.locationName}</Card.Title>
+                                    <Card.Header className="card_h">
+                                        <Card.Title className="card_t">{loc.address.locationName}</Card.Title>
                                         <Card.Subtitle>{loc.address.line1}</Card.Subtitle>
-                                        <Card.Text>{loc.address.city && loc.address.state && loc.address.zip}</Card.Text>
+                                        <Card.Text className="card_t">{loc.address.city && loc.address.state && loc.address.zip}</Card.Text>
                                     </Card.Header>
-                                    <Card.Text>
+                                    <Card.Text className="card_t">
                                         <Card.Text>{loc.pollingHours}</Card.Text>
                                         <Card.Text>{loc.notes}</Card.Text>
                                     </Card.Text>
@@ -87,6 +87,9 @@ class PollingLocations extends Component {
                             </Card>
                         </Col>
                     ))}
+                    <div class="footer-copy">
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+			</div>
                 </>
             );
         }

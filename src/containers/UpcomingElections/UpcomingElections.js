@@ -51,21 +51,24 @@ class UpcomingElections extends Component {
                 <>
                     {elections.map(election => (
                         <Col xs={12} xl={12}>
-                            <Card >
+                            <Card className="card_layout">
                                 {/* <Card.Image variant="top" src={} /> */}
                                 <Card.Body>
-                                    <Card.Header>
+                                    <Card.Header className="card_h">
                                         <Card.Title>{election.name}</Card.Title>
                                         <Card.Subtitle>{election.electionDay}</Card.Subtitle>
                                     </Card.Header>
-                                    <Card.Text>
-                                        <p>{election.id}</p>
-                                        <p>{election.ocdDivisionId}</p>
+                                    <Card.Text className="card_t"> 
+                                        <p style={{"margin-bottom": "0px"}}>{election.id}</p>
+                                        <p style={{"margin-bottom": "0px"}}>{election.ocdDivisionId}</p>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
                     ))}
+                    <div class="footer-copy">
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+			</div>
                 </>
             );
         }

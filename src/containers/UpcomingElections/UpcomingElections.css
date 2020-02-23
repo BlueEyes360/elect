@@ -1,0 +1,39 @@
+.card_layout{
+
+    background-color: #E8E8E8 !important;
+    padding-top: 10px;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px !important; 
+    border-left-color:lightslategray !important;
+    border-right-color: transparent !important;
+}
+.card_t{
+    font-family: 'Times New Roman', Times, serif;
+}
+.card_t{
+    font-family: 'Times New Roman', Times, serif;
+}
+.list-group{
+    border-radius: 10px !important;
+    border-left-color:lightslategray !important;
+    border-right-color: transparent !important;
+}
+.card-title{
+    font-weight: 700 !important;
+}
+.list-group{
+    border-radius: 10px !important;
+    border-left-color:lightslategray !important;
+    border-right-color: transparent !important;
+}
+.card-header{
+    font-weight: 800 !important;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: whitesmoke !important;
+    border-radius: 10px !important;
+    border-left-color:lightslategray !important;
+    border-right-color: transparent !important;
+}

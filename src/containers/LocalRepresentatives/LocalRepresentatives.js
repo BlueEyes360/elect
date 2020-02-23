@@ -64,29 +64,32 @@ class LocalRepresentatives extends Component {
                 <>
                     {representatives.map((rep, i) => (
                         <Col xs={12} xl={12}>
-                            <Card onClick={() => alert("This is working")}>
+                            <Card onClick={() => alert("This is working")} className="card_layout">
                                 <Card.Header>
-                                    { "photoUrl" in rep === true && <Card.Img variant="top" src={rep.photoUrl} /> }
+                                    { "photoUrl" in rep === true && <Card.Img className="card_img" style={{"border-radius": "10px"}} variant="top" src={rep.photoUrl} /> }
                                     <Card.Title>{rep.name}</Card.Title>
                                     { offices[i] !== undefined && <Card.Subtitle>{offices[i].name}</Card.Subtitle>}
                                     <Card.Subtitle>{rep.party}</Card.Subtitle>
                                 </Card.Header>
-                                <Card.Body>
-                                    <Card.Text>
+                                <Card.Body style={{"margin": "0px", "padding":"0px"}}>
+                                    <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>
                                         { rep.address !== undefined &&
-                                            <Card.Text>{rep.address[0].line1}
-                                                <Card.Text>{rep.address[0].line2}</Card.Text>
-                                                <Card.Text>{rep.address[0].line3}</Card.Text>
-                                                <Card.Text>{rep.address[0].city} {rep.address[0].state}</Card.Text>
+                                            <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>{rep.address[0].line1}
+                                                <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>{rep.address[0].line2}</Card.Text>
+                                                <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>{rep.address[0].line3}</Card.Text>
+                                                <Card.Text className="card_t" style={{"margin-bottom": "0px"}}>{rep.address[0].city} {rep.address[0].state}</Card.Text>
                                             </Card.Text>
                                         }
-                                        { rep.urls !== undefined && <Card.Text><a href={rep.urls[0]}> {rep.urls[0]} </a> </Card.Text> }
-                                        { rep.phones !== undefined && <Card.Text> {rep.phones[0]} </Card.Text> }
+                                        { rep.urls !== undefined && <Card.Text style={{"margin-bottom": "0px"}}><a href={rep.urls[0]}> {rep.urls[0]} </a> </Card.Text> }
+                                        { rep.phones !== undefined && <Card.Text style={{"margin-bottom": "0px"}}> {rep.phones[0]} </Card.Text> }
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
                     ))}
+                    <div class="footer-copy">
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+			</div>
                 </>
             );
         }
