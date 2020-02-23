@@ -6,6 +6,8 @@ import SupportedBills from '../HouseMembers/SupportedBills';
 import Votes from '../HouseMembers/Votes';
 import Travel from '../HouseMembers/Travel';
 import Statements from '../HouseMembers/Statements';
+import Accordion from 'react-bootstrap/Accordion'
+import Button from 'react-bootstrap/Button'
 
 class Representative extends Component {
     constructor(props) {
@@ -17,7 +19,7 @@ class Representative extends Component {
 
     render() {
         return (
-            <div>
+            <Accordion>
                 <Card>
                     <Card.Header>
                         <Card.Img variant="Top" src="" />
@@ -39,34 +41,57 @@ class Representative extends Component {
                         <Card.Text>Missed Votes: {this.props.data.missed_votes}</Card.Text>
                         <Card.Text>Votes with Party: {this.props.data.votes_with_party_pct}%</Card.Text>
                         <Card.Text>Votes against Party: {this.props.data.votes_against_party_pct}%</Card.Text>
-                        <Votes id={this.props.id} />
+                        <Card.Header>
+                            <Accordion.Toggle as={Card.Text} variant="link" eventKey="4">
+                                Votes
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey="4">
+                                <Votes id={this.props.id} />
+                            </Accordion.Collapse>
+                        </Card.Header>
                     </Card.Body>
                 </Card>
                 <Card>
                     <Card.Header>
-                        <Card.Title>Statements</Card.Title>
+                        <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+                            Statements
+                        </Accordion.Toggle>
                     </Card.Header>
-                    <Statements id={this.props.id} />
+                    <Accordion.Collapse eventKey="0">
+                        <Statements id={this.props.id} />
+                    </Accordion.Collapse>
                 </Card>
                 <Card>
                     <Card.Header>
-                        <Card.Title>Bills Supported</Card.Title>
+                        <Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
+                            Bills Supported
+                        </Accordion.Toggle>
                     </Card.Header>
-                    <SupportedBills id={this.props.id} />
+                    <Accordion.Collapse eventKey="1">
+                        <SupportedBills id={this.props.id} />
+                    </Accordion.Collapse>
                 </Card>
                 <Card>
                     <Card.Header>
-                        <Card.Title>Travel</Card.Title>
+                        <Accordion.Toggle as={Card.Header} variant="link" eventKey="2">
+                            Travel
+                        </Accordion.Toggle>
                     </Card.Header>
-                    <Travel id={this.props.id} />
+                    <Accordion.Collapse eventKey="2">
+                        <Travel id={this.props.id} />
+                    </Accordion.Collapse>
                 </Card>
                 <Card>
                     <Card.Header>
-                        <Card.Title>News Articles</Card.Title>
+                        <Accordion.Toggle as={Card.Header} variant="link" eventKey="3">
+                            News Articles
+                        </Accordion.Toggle>
                     </Card.Header>
-                    <LocalRepNews name={this.props.name} />
+                    <Accordion.Collapse eventKey="3">
+                        <LocalRepNews name={this.props.name} />
+                    </Accordion.Collapse>
                 </Card>
-            </div>
+            </Accordion>
         );
     }
 }
