@@ -48,6 +48,9 @@ const Navigation = (props) => {
                             <NavLink to="/localRepresentatives">Local Representatives</NavLink>
                         </DropdownItem>
                         <DropdownItem>
+                            <NavLink to="/politicalNews">Political News</NavLink>
+                        </DropdownItem>
+                        <DropdownItem>
                             <NavLink to="/test">Test</NavLink>
                         </DropdownItem>
                     </DropdownMenu>

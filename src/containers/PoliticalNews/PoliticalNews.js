@@ -5,9 +5,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import {PROPUBLICA_API_KEY} from '../../API_keys';
+import {MICROSOFT_API_KEY} from '../../API_keys';
 
-class ExampleAPI extends Component {
+class PoliticalNews extends Component {
 
     constructor(props) {
         super(props);
@@ -15,7 +15,7 @@ class ExampleAPI extends Component {
             error: null,
             isLoaded: false,
             election: null,
-            supported_bills: null,
+            pollingLocations: null,
             results: null,
             state: null
         }
@@ -23,16 +23,15 @@ class ExampleAPI extends Component {
 
     // Example of an API Call
     componentDidMount() {
-        let member_id = "L000287" 
-        let type = "active"
+        let category = "Politics"
 
-        let url_bill = "https://api.propublica.org/congress/v1/members/" + member_id + "/bills/" + type + ".json"
+        let url = "https://api.cognitive.microsoft.com/bing/v7.0/news/?category=" + category
         
         const myHeaders = new Headers({
-            'X-API-Key': PROPUBLICA_API_KEY
+            'Ocp-Apim-Subscription-Key': MICROSOFT_API_KEY
         });
 
-        const myRequest = new Request(url_bill, {
+        const myRequest = new Request(url, {
             method: 'GET',
             headers: myHeaders,
         });
@@ -43,7 +42,7 @@ class ExampleAPI extends Component {
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    results: result["results"][0]["bills"]
+                    results: result["value"]
                 });
             },
             // Note: it's important to handle errors here
@@ -67,16 +66,18 @@ class ExampleAPI extends Component {
         } else {
             return (
                 <>
-                {results.map((results, i) => (
+                {results.map((result, i) => (
                      <Col xs={12} xl={12}>
                         <Card>
-                            <Card.Body>
+                            { "contentUrl" in result.image.thumbnail === true && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
+                             <Card.Body>
                                  <Card.Header>
-                                    {<Card.Title>{results.number}</Card.Title> }
+                                     {<Card.Title>{result.name}</Card.Title> }
                                     <Card.Text>
-                                        <Card.Text>{results.title}</Card.Text>
-                                        <Card.Text>{"Sponsor: " + results.sponsor_name} </Card.Text>
-                                        <Card.Text>{"Link to bill: " + results.congressdotgov_url} </Card.Text>
+                                        <Card.Text>{result.description}</Card.Text>
+                                        <Card.Text>{result.provider.name}</Card.Text>
+                                        <Card.Text>{result.datePublished}</Card.Text>
+                                        <Card.Text>{result.ampUrl}</Card.Text>
                                     </Card.Text>
                                  </Card.Header>
                              </Card.Body>
@@ -88,5 +89,4 @@ class ExampleAPI extends Component {
         }
     }
 }
-
-export default ExampleAPI;
+export default PoliticalNews;
