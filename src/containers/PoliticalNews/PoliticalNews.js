@@ -15,8 +15,29 @@ class PoliticalNews extends Component {
             election: null,
             pollingLocations: null,
             results: null,
-            state: null
+            images: [],
+            state: null,
         }
+
+        this.getImages = this.getImages.bind(this);
+    }
+
+    async getImages(result) {
+            let url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + result.name + "&count=1";
+        
+            const myHeaders = new Headers({
+            'Ocp-Apim-Subscription-Key': MICROSOFT_API_KEY
+            });
+
+            const myRequest = new Request(url, {
+                method: 'GET',
+                headers: myHeaders,
+            });
+
+            const response = await fetch(myRequest);
+            const json = await response.json();
+
+            setTimeout(() => {this.setState({ images: [...this.state.images, json] })}, 3000)
     }
 
     // Example of an API Call
@@ -41,7 +62,11 @@ class PoliticalNews extends Component {
                 this.setState({
                     isLoaded: true,
                     results: result["value"]
-                });
+                }, () => {
+                    result.value.map(item => 
+                        this.getImages(item),
+                    );
+                })
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -50,13 +75,16 @@ class PoliticalNews extends Component {
                 this.setState({
                     isLoaded: true,
                     error
-                });
+                }, () => {
+
+                })
             }
         )
     }
 
     render() {
-        const { error, isLoaded, results } = this.state;
+        let { error, isLoaded, results, images} = this.state;
+        console.log(images);
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -64,14 +92,12 @@ class PoliticalNews extends Component {
         } else {
             return (
                 <>
-                {results.map((result, i) => (        
-                    
-                    <Col xs={12} xl={12}>
-
+                {results.map((result, i) => (
+                     <Col xs={12} xl={12}>
                         {result.ampUrl !== undefined &&
                         <a href={result.ampUrl}>
-                            <Card className="card_layout">
-                                { result.image !== undefined && <Card.Img variant="left" style={{"height": "350px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={result.image.thumbnail.contentUrl} /> }
+                            <Card>
+                                { images[i] !== undefined && <Card.Img variant="top" style={{"height": "350px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={images[i].value[0].contentUrl} /> }
                                 <Card.Body>
                                     <Card.Header>
                                         {<Card.Title>{result.name}</Card.Title> }
