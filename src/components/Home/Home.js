@@ -29,17 +29,18 @@ class Home extends React.Component {
     render () {
         return(
             <>
-                <Col xs="12" xl="12">
-                    <Form>
-                        <Form.Label>Enter address to check</Form.Label>
-                        <Form.Control type="address" placeholder="113 Example Lane Richland WA 99354" value={this.state.address} onChange={this.return_data} ref={(i) => this.input = i} />
-                    </Form>
-                </Col>
+                
             <Image src={fluid} className="fluid" style={{"margin": "0px", "padding": "0px", "border": "0"}} thumbnail/>
             {/* <Image src={splash} style={{"backgroundColor": "transparent", "border": "0"}} thumbnail /> */}
             {/* <Image src={splash} className="splash" thumbnail /> */}
             <div style={{"margin": "0px", "padding": "0px", "border": "0"} } class="upcoming">
-						<h4>Upcoming Events</h4>
+            <Col xs="12" xl="12" style={{"font-family": "Times New Roman, Times, serif"}}>
+                    <Form>
+                        <Form.Label>Enter address to check</Form.Label>
+                        <Form.Control type="address" placeholder="113 Example Lane Richland WA 99354" value={this.state.address} onChange={this.return_data} ref={(i) => this.input = i} />
+                    </Form>
+            </Col>
+                		<h4>Upcoming Events</h4>
 						
 					</div>
             <div class="footer-copy">

@@ -83,8 +83,8 @@ componentDidMount() {
             return <div>Loading...</div>;
         } else if (noPollingLocs) {
             return <Col xs="12" xl="12">
-                    <Card>
-                        <Card.Title>No Locations Found</Card.Title>
+                    <Card className="card_layout">
+                        <Card.Title className="card_t">No Locations Found</Card.Title>
                         <Card.Subtitle>Google Civic API failed to return locations</Card.Subtitle>
                     </Card>
                 </Col>;
@@ -105,12 +105,13 @@ componentDidMount() {
                     </div>
                     {pollingLocations.map((loc, i) => (
                         <Col xs={12} xl={12}>
-                            <Card onClick={() => this.Geocoding(loc)}>
+
+                            <Card className="card_layout" onClick={() => this.Geocoding(loc)}>
                                 <Card.Body>
-                                <Card.Header>
-                                    <Card.Title>{loc.address.locationName}</Card.Title>
+                                <Card.Header className="card_h">
+                                    <Card.Title className="card_t">{loc.address.locationName}</Card.Title>
                                     <Card.Subtitle>{loc.address.line1}</Card.Subtitle>
-                                    <Card.Text>
+                                    <Card.Text className="card_t">
                                     {loc.address.city && loc.address.state && loc.address.zip}
                                     </Card.Text>
                                 </Card.Header>
@@ -122,6 +123,9 @@ componentDidMount() {
                             </Card>
                         </Col>
                     ))}
+                    <div class="footer-copy">
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+			</div>
                 </>
             );
         }
