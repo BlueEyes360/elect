@@ -72,7 +72,7 @@ class Statements extends Component {
                         <Card>
                             <Card.Body>
                                  <Card.Header>
-                                    {<Card.Title>{"Statement Type:" + result.type}</Card.Title> }
+                                    {<Card.Title>{"Statement Type: " + result.statement_type}</Card.Title> }
                                     <Card.Text>{result.date}</Card.Text>
                                     <Card.Text>{result.title}</Card.Text>
                                     <Card.Text>{"State: " + result.state} </Card.Text>

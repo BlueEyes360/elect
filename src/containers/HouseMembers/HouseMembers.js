@@ -123,7 +123,7 @@ class HouseMembers extends Component {
                                     <Card.Text>
                                         {result.party === "D" && <Card.Text>Democrat {result.state}</Card.Text>}
                                         {result.party === "R" && <Card.Text>Republican {result.state}</Card.Text>}
-                                        <Card.Text>{"Facebook: " + result.facebook_account}</Card.Text>
+                                        {result.facebook_account !== null && <Card.Text>{"Facebook: " + result.facebook_account}</Card.Text>}
                                         <Card.Text><a href={result.url}>{result.url}</a></Card.Text>
                                         {/* <Card.Text>{result.state}</Card.Text> */}
                                     </Card.Text>
