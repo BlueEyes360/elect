@@ -68,20 +68,18 @@ class SupportedBills extends Component {
             return (
                 <>
                 {results.map((results, i) => (
-                     <Col xs={12} xl={12}>
-                        <Card>
-                            <Card.Body>
-                                 <Card.Header>
-                                    {<Card.Title>{results.number}</Card.Title> }
-                                    <Card.Text>
-                                        <Card.Text>{results.title}</Card.Text>
-                                        <Card.Text>{"Sponsor: " + results.sponsor_name} </Card.Text>
-                                        <Card.Text>{"Link to bill: " + results.congressdotgov_url} </Card.Text>
-                                    </Card.Text>
-                                 </Card.Header>
-                             </Card.Body>
-                         </Card>
-                    </Col>
+                    <Card>
+                        <Card.Body>
+                                <Card.Header>
+                                {<Card.Title>{results.number}</Card.Title> }
+                                <Card.Text>
+                                    <Card.Text>{results.title}</Card.Text>
+                                    <Card.Text>{"Sponsor: " + results.sponsor_name} </Card.Text>
+                                    <Card.Text>{"Link to bill: " + results.congressdotgov_url} </Card.Text>
+                                </Card.Text>
+                            </Card.Header>
+                        </Card.Body>
+                    </Card>
                 ))}
                 </>
             );

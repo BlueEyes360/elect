@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import {MICROSOFT_API_KEY} from '../../API_keys';
+import {MICROSOFT_API_KEY} from '../../../API_keys';
 
 class LocalRepNews extends Component {
 
@@ -24,6 +22,11 @@ class LocalRepNews extends Component {
     // Example of an API Call
     componentDidMount() {
         let q = "Bernie Sanders"
+
+        if (this.props.name !== undefined)
+        {
+            q = this.props.name
+        }
 
         let count = "3"
         let offset = "0"
@@ -71,22 +74,20 @@ class LocalRepNews extends Component {
             return (
                 <>
                 {results.map((result, i) => (
-                     <Col xs={12} xl={12}>
-                        <Card>
-                            { "contentUrl" in result.image.thumbnail === true && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
-                             <Card.Body>
-                                 <Card.Header>
-                                     {<Card.Title>{result.name}</Card.Title> }
-                                    <Card.Text>
-                                        <Card.Text>{result.description}</Card.Text>
-                                        <Card.Text>{result.provider.name}</Card.Text>
-                                        <Card.Text>{result.datePublished}</Card.Text>
-                                        <Card.Text>{result.ampUrl}</Card.Text>
-                                    </Card.Text>
-                                 </Card.Header>
-                             </Card.Body>
-                         </Card>
-                    </Col>
+                    <Card>
+                        {result.image.thumbnail !== undefined && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
+                            <Card.Body>
+                                <Card.Header>
+                                    {<Card.Title>{result.name}</Card.Title> }
+                                <Card.Text>
+                                    <Card.Text>{result.description}</Card.Text>
+                                    <Card.Text>{result.provider.name}</Card.Text>
+                                    <Card.Text>{result.datePublished}</Card.Text>
+                                    <Card.Text>{result.ampUrl}</Card.Text>
+                                </Card.Text>
+                            </Card.Header>
+                        </Card.Body>
+                    </Card>
                 ))}
                 </>
             );

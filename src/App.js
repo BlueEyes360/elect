@@ -3,16 +3,18 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Navigation from './components/Navigation/Navigation';
-import ExampleAPI from './containers/ExampleAPI/ExampleAPI';
 import Home from './components/Home/Home';
+import ExampleAPI from './containers/ExampleAPI/ExampleAPI';
 import UpcomingElections from './containers/UpcomingElections/UpcomingElections';
 import LocalContests from './containers/LocalContests/LocalContests';
 import PollingLocations from './containers/PollingLocations/PollingLocations';
 import LocalRepresentatives from './containers/LocalRepresentatives/LocalRepresentatives';
 import PoliticalNews from './containers/PoliticalNews/PoliticalNews';
+import Representative from './containers/Representative/Representative';
+import HouseMembers from './containers/HouseMembers/HouseMembers';
+import SenateMembers from './containers/SenateMembers/SenateMembers';
 
 import './App.css';
-
 class App extends React.Component {
 
     constructor(props) {
@@ -61,6 +63,14 @@ class App extends React.Component {
                     <Route
                         path="/politicalNews"
                         render={(props) => <PoliticalNews {...props}/> }
+                    />
+                    <Route
+                        path="/senate"
+                        render={(props) => <SenateMembers {...props}/> }
+                    />
+                    <Route
+                        path="/houseOfReps"
+                        render={(props) => <HouseMembers {...props}/> }
                     />
 
                 </div>
