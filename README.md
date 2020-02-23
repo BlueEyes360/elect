@@ -1,4 +1,4 @@
-##### ELECT - Evaluating Local Elections and Candidates Tool
+# ELECT - Evaluating Local Elections and Candidates Tool
 
 ### Team Tier 2
 
