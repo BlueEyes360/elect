@@ -69,7 +69,6 @@ class HouseMembers extends Component {
 
     // Example of an API Call
     componentDidMount() {
-        let category = "Politics"
         let senate_count = "116"
         let sitting = "house"
         let url = "https://api.propublica.org/congress/v1/" + senate_count + "/" + sitting + "/members.json"
@@ -123,7 +122,8 @@ class HouseMembers extends Component {
                                     <Card.Text>
                                         {result.party === "D" && <Card.Text style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>Democrat {result.state}</Card.Text>}
                                         {result.party === "R" && <Card.Text style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>Republican {result.state}</Card.Text>}
-                                        <Card.Text style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>{"Facebook: " + result.facebook_account}</Card.Text>
+                                        {result.party === "I" && <Card.Text style=style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}>Independent {result.state}</Card.Text>}
+                                        {result.facebook_account !== null && <Card.Text style={{"margin-bottom": "0px"}}>{"Facebook: " + result.facebook_account}</Card.Text>}
                                         <Card.Text style={{"margin-bottom": "0px !important", "fontFamily": "Times New Roman, Times, serif !important"}}><a href={result.url}>{result.url}</a></Card.Text>
                                         {/* <Card.Text>{result.state}</Card.Text> */}
                                     </Card.Text>

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {PROPUBLICA_API_KEY} from '../../API_keys';
@@ -27,7 +25,7 @@ class HouseCommittees extends Component {
         let chamber = "senate"
 
         let url = "https://api.propublica.org/congress/v1/" + congress + "/" + chamber + "/committees.json"
-        
+
         const myHeaders = new Headers({
             'X-API-Key': PROPUBLICA_API_KEY
         });

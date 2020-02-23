@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-import { StaticGoogleMap, Marker, Path } from "react-static-google-map";
+import { StaticGoogleMap, Marker } from "react-static-google-map";
 
 import { GOOGLE_CIVIC_API_KEY } from "../../API_keys";
 import { GOOGLE_MAPS_API_KEY } from "../../API_keys";
@@ -124,7 +124,7 @@ componentDidMount() {
                         </Col>
                     ))}
                     <div class="footer-copy">
-              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
+              	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://smart-elect.info">Elect</a></p>
 			</div>
                 </>
             );
