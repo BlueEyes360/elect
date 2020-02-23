@@ -7,6 +7,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import splash from '../../assets/ELECT-Splash_v1_1.png';
 import fluid from '../../assets/elections.jpg';
 import './Home.css';
+import PoliticalNews from '../../containers/PoliticalNews/PoliticalNews'
 
 class Home extends React.Component {
 
@@ -40,8 +41,8 @@ class Home extends React.Component {
                         <Form.Control type="address" placeholder="113 Example Lane Richland WA 99354" value={this.state.address} onChange={this.return_data} ref={(i) => this.input = i} />
                     </Form>
             </Col>
-                		<h4>Upcoming Events</h4>
-						
+                	<h4>Upcoming Events</h4>
+						<PoliticalNews/>
 					</div>
             <div class="footer-copy">
               	<p>&copy; 2020 Election. All rights reserved | Design by <a href="http://elect.com">Elect</a></p>
