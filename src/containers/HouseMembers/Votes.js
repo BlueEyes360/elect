@@ -66,19 +66,17 @@ class Votes extends Component {
             return (
                 <>
                 {results.map((result, i) => (
-                     <Col xs={12} xl={12}>
-                        <Card>
-                            <Card.Body>
-                                 <Card.Header>
-                                    {<Card.Title>{"Bill: " + result.bill.title}</Card.Title> }
-                                    <Card.Text>{result.description}</Card.Text>
-                                    <Card.Text>{"Latest Action: " + result.bill.latest_action}</Card.Text>
-                                    <Card.Text>{"Position: Voted " + result.position}</Card.Text>
-                                    <Card.Text>{"Result: " + result.result + " on " + result.date}</Card.Text>
-                                 </Card.Header>
-                             </Card.Body>
-                         </Card>
-                    </Col>
+                    <Card>
+                        <Card.Body>
+                                <Card.Header>
+                                {<Card.Title>{"Bill: " + result.bill.title}</Card.Title> }
+                                <Card.Text>{result.description}</Card.Text>
+                                <Card.Text>{"Latest Action: " + result.bill.latest_action}</Card.Text>
+                                <Card.Text>{"Position: Voted " + result.position}</Card.Text>
+                                <Card.Text>{"Result: " + result.result + " on " + result.date}</Card.Text>
+                            </Card.Header>
+                        </Card.Body>
+                    </Card>
                 ))}
                 </>
             );
