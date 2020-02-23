@@ -3,6 +3,9 @@ import Card, { CardHeader } from 'react-bootstrap/Card';
 
 import LocalRepNews from '../LocalRepresentatives/LocalRepNews/LocalRepNews';
 import SupportedBills from '../HouseMembers/SupportedBills';
+import Votes from '../HouseMembers/Votes';
+import Travel from '../HouseMembers/Travel';
+import Statements from '../HouseMembers/Statements';
 
 class Representative extends Component {
     constructor(props) {
@@ -36,7 +39,14 @@ class Representative extends Component {
                         <Card.Text>Missed Votes: {this.props.data.missed_votes}</Card.Text>
                         <Card.Text>Votes with Party: {this.props.data.votes_with_party_pct}%</Card.Text>
                         <Card.Text>Votes against Party: {this.props.data.votes_against_party_pct}%</Card.Text>
+                        <Votes id={this.props.id} />
                     </Card.Body>
+                </Card>
+                <Card>
+                    <Card.Header>
+                        <Card.Title>Statements</Card.Title>
+                    </Card.Header>
+                    <Statements id={this.props.id} />
                 </Card>
                 <Card>
                     <Card.Header>
@@ -44,7 +54,13 @@ class Representative extends Component {
                     </Card.Header>
                     <SupportedBills id={this.props.id} />
                 </Card>
-                    <Card>
+                <Card>
+                    <Card.Header>
+                        <Card.Title>Travel</Card.Title>
+                    </Card.Header>
+                    <Travel id={this.props.id} />
+                </Card>
+                <Card>
                     <Card.Header>
                         <Card.Title>News Articles</Card.Title>
                     </Card.Header>
