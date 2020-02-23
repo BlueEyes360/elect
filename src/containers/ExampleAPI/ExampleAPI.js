@@ -17,8 +17,16 @@ class ExampleAPI extends Component {
             name: null,
             supported_bills: null,
             results: null,
-            state: null
+            show: false
         }
+    }
+
+    handleClose = () => {
+        this.setState({show: false})
+    }
+
+    handleOpen = () => {
+        this.setState({show: true})
     }
 
     // Example of an API Call
@@ -65,9 +73,10 @@ class ExampleAPI extends Component {
         } else {
             return (
                 <>
+                {this.state.show === true && this.modal}
                 {results.map((result, i) => (
                      <Col xs={12} xl={12}>
-                        <Card>
+                         <Card>
                             <Card.Body>
                                  <Card.Header>
                                     {<Card.Title>{result.destination}</Card.Title> }
