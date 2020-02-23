@@ -2,3 +2,10 @@
     background-color: transparent !important;
     border: none !important;
 }
+.footer-copy{
+    background-color: black;
+    color: cornsilk;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    height: 70px;
+}

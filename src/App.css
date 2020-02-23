@@ -2,7 +2,7 @@
     height: 100vh;
     text-align: center;
     /* background-color: (0,0,0,0.5); */
-    background-image: url("assets/background_v1_1.png");
+    /* background-image: url("assets/background_v1_1.png"); */
     background-repeat: repeat;
     overflow: auto;
 }

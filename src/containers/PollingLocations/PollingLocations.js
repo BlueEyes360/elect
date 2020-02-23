@@ -18,7 +18,8 @@ class PollingLocations extends Component {
       address: null,
       latlong: "6.4488387,3.5496361",
       zoom: "4",
-      center: "Lebanon,Kansas"
+      center: "Lebanon,Kansas",
+      noPollingLocs: false
     };
   }
 
@@ -32,26 +33,41 @@ class PollingLocations extends Component {
       address.replace(" ", "%20") +
       "&electionId=2000";
 
-    fetch(url)
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            pollingLocations: result["pollingLocations"]
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
+        if (this.props.address !== null) {
+            address = this.props.address
         }
-      );
+
+        let url = "https://www.googleapis.com/civicinfo/v2/voterinfo?key=" + GOOGLE_CIVIC_API_KEY + "&address=" + address.replace(" ", "%20") + "&electionId=2000"
+
+        fetch(url)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                if (result["pollingLocations"] === undefined) {
+                    this.setState({
+                        isLoaded: true,
+                        noPollingLocs: true
+                    });
+                } else {
+                    this.setState({
+                        isLoaded: true,
+                        pollingLocations: result["pollingLocations"],
+                    });
+                }
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+                this.setState({
+                    isLoaded: true,
+                    error
+                });
+            }
+        )
+     }
   }
+}
 
   async Geocoding(loc) {
     let address = loc.address.line1.split(" ").join("+") + "," + loc.address.city + "," + loc.address.state;
@@ -74,6 +90,13 @@ class PollingLocations extends Component {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
+    } else if (noPollingLocs) {
+    return <Col xs="12" xl="12">
+            <Card>
+                <Card.Title>No Locations Found</Card.Title>
+                <Card.Subtitle>Google Civic API failed to return locations</Card.Subtitle>
+            </Card>
+        </Col>;
     } else {
       return (
         <>
@@ -110,8 +133,7 @@ class PollingLocations extends Component {
           ))}
         </>
       );
-    }
-  }
-}
+=======
+
 
 export default PollingLocations;
