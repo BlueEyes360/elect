@@ -74,7 +74,7 @@ class LocalRepNews extends Component {
                 <>
                 {results.map((result, i) => (
                     <Card className="card_layout">
-                        {result.image.thumbnail !== undefined && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
+                        {result.image !== undefined && result.image.thumbnail !== undefined && <Card.Img variant="top" src={result.image.thumbnail.contentUrl} /> }
                             <Card.Body>
                                 <Card.Header>
                                     {<Card.Title style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.name}</Card.Title> }
@@ -82,7 +82,7 @@ class LocalRepNews extends Component {
                                     <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.description}</Card.Text>
                                     <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.provider.name}</Card.Text>
                                     <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.datePublished}</Card.Text>
-                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.ampUrl}</Card.Text>
+                                    <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}><a href={result.url}>{result.url}</a></Card.Text>
                                 </Card.Text>
                             </Card.Header>
                         </Card.Body>

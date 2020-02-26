@@ -93,11 +93,11 @@ class PoliticalNews extends Component {
             return (
                 <>
                 {results.map((result, i) => (
-                     <Col xs={12} xl={12}>
+                    <Col xs={12} xl={12}>
                         {result.ampUrl !== undefined &&
                         <a href={result.ampUrl}>
                             <Card className="card_layout">
-                                { images[i] !== undefined && <Card.Img variant="top" style={{"height": "250px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={images[i].value[0].contentUrl} /> }
+                                { images[i] !== undefined && images[i].value[0] !== undefined && <Card.Img variant="top" style={{"height": "250px", "width": "375px", "margin":"10px", "border-radius":"10px"}} src={images[i].value[0].contentUrl} /> }
                                 <Card.Body>
                                     <Card.Header className="card_h" style={{"border-style":"solid"}}>
                                         {<Card.Title>{result.name}</Card.Title> }

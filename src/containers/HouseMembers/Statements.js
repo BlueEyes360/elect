@@ -20,7 +20,7 @@ class Statements extends Component {
 
     // Example of an API Call
     componentDidMount() {
-        let member_id = "C001084" 
+        let member_id = "C001084"
         let congress = "115"
 
         let url = "https://api.propublica.org/congress/v1/members/" + member_id + "/statements/" + congress + ".json"
@@ -57,11 +57,6 @@ class Statements extends Component {
 
     render() {
         const { error, isLoaded, results } = this.state;
-        const card_ha={
-            fontFamily: "Times New Roman, Times, serif !important",
-            margin: "0px !important",
-            padding: "0px !important"
-        }
         
         if (error) {
             return <div>Error: {error.message}</div>;
@@ -71,19 +66,19 @@ class Statements extends Component {
             return (
                 <>
                 {results.map((result, i) => (
-                     <Col xs={12} xl={12}>
+                    <Col xs={12} xl={12}>
                         <Card className="card_layout">
                             <Card.Body>
-                                 <Card.Header className="card_h" style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>
+                                <Card.Header className="card_h" style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>
                                     {<Card.Title style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Statement Type: " + result.statement_type}</Card.Title> }
                                     <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.date}</Card.Text>
                                     <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{result.title}</Card.Text>
                                     <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"State: " + result.state} </Card.Text>
                                     <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Link to full statement: " + result.url} </Card.Text>
                                     {result.subjects[0] !== undefined && <Card.Text style={{"fontFamily": "Times New Roman, Times, serif !important", "margin": "0px !important"}}>{"Subjects: " + result.subjects[0].name}</Card.Text>}
-                                 </Card.Header>
-                             </Card.Body>
-                         </Card>
+                                </Card.Header>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 ))}
                 </>
